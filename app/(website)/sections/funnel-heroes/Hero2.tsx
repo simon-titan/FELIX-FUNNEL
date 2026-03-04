@@ -5,7 +5,7 @@ import { Link } from "@/components/ui/link";
 export function Hero2() {
   return (
     <Section pt={20} pb={20} bg="white">
-      <VStack spacing={8} textAlign="center" maxWidth="900px" mx="auto">
+      <VStack gap={8} textAlign="center" maxWidth="900px" mx="auto">
         <Heading as="h1" size="2xl" fontWeight="extrabold" lineHeight="shorter">
           Die KI-gestützte <Text as="span" color="green.500">Performance-Optimierung</Text> für deinen Erfolg.
         </Heading>
@@ -15,7 +15,6 @@ export function Hero2() {
         </Text>
         <Button
           as={Link}
-          href="#kostenloses-erstgespräch"
           bg="green.500"
           color="white"
           size="lg"

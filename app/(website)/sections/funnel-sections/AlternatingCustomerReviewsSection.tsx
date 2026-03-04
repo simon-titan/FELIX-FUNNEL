@@ -106,32 +106,27 @@ export function AlternatingCustomerReviewsSection() {
             >
               {/* YouTube Embed Placeholder */}
               <Box as="iframe"
-                src={review.videoSrc}
                 width="full"
                 height="full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
                 title="Customer Testimonial"
-                frameBorder="0"
               />
               {/* PlayCircle Overlay - if you want a custom play button */}
               {/* <Icon as={PlayCircle} boxSize="60px" color="whiteAlpha.800" position="absolute" /> */}
             </Box>
 
             {/* Review Content */}
-            <VStack flex="1" width={{ base: "full", md: "50%" }} alignItems="flex-start" spacing={6}>
+            <VStack flex="1" width={{ base: "full", md: "50%" }} alignItems="flex-start" gap={6}>
               {/* Stars */}
-              <HStack spacing={1} color="yellow.400">
+              <HStack gap={1} color="yellow.400">
                 <StarIcon fontSize="sm" /><StarIcon fontSize="sm" /><StarIcon fontSize="sm" /><StarIcon fontSize="sm" /><StarIcon fontSize="sm" />
               </HStack>
 
               {/* Reviewer Info */}
-              <HStack spacing={4} alignItems="center">
+              <HStack gap={4} alignItems="center">
                 <Avatar.Root size="md">
                   <Avatar.Image src={review.avatarSrc} />
-                  <Avatar.Fallback name={review.name} />
                 </Avatar.Root>
-                <VStack alignItems="flex-start" spacing={0}>
+                <VStack alignItems="flex-start" gap={0}>
                   <Text fontWeight="bold" fontSize="lg">{review.name}</Text>
                   <Text fontSize="sm" color="gray.600">{review.title}</Text>
                 </VStack>
@@ -143,7 +138,7 @@ export function AlternatingCustomerReviewsSection() {
               </Heading>
 
               {/* Vor der Zusammenarbeit */}
-              <VStack alignItems="flex-start" spacing={2}>
+              <VStack alignItems="flex-start" gap={2}>
                 <Heading as="h3" size="md" fontWeight="semibold" color="gray.700">Vor der Zusammenarbeit</Heading>
                 <Text fontSize="md" color="gray.600">
                   {review.preCollaboration}
@@ -151,9 +146,9 @@ export function AlternatingCustomerReviewsSection() {
               </VStack>
 
               {/* Ergebnisse */}
-              <VStack alignItems="flex-start" spacing={2}>
+              <VStack alignItems="flex-start" gap={2}>
                 <Heading as="h3" size="md" fontWeight="semibold" color="gray.700">Ergebnisse nach dem Coaching</Heading>
-                <Stack spacing={1} alignItems="flex-start">
+                <Stack gap={1} alignItems="flex-start">
                   {review.results.map((result, resIndex) => (
                     <HStack key={resIndex}>
                       <Icon as={CheckCircle} color="green.500" />
@@ -164,7 +159,7 @@ export function AlternatingCustomerReviewsSection() {
               </VStack>
 
               {/* Social Media Links */}
-              <HStack spacing={4} pt={4}>
+              <HStack gap={4} pt={4}>
                 {review.socialLinks.map((social, socialIndex) => (
                   <Link key={socialIndex} href={social.href} textExternal>
                     <Icon as={social.icon} /> {social.icon.name}

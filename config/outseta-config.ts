@@ -8,12 +8,12 @@ export const outsetaConfig = {
     /** URL to redirect after successful registration */
     postRegistrationUrl:
       process.env.NODE_ENV === "production"
-        ? "https://pump-it-club.com/thank-you"
+        ? "https://pump-it-club.de/thank-you"
         : "http://localhost:3000/thank-you",
     /** URL to redirect after successful authentication */
     authenticationCallbackUrl:
       process.env.NODE_ENV === "production"
-        ? "https://pump-it-club.com/app"
+        ? "https://pump-it-club.com/app/free"
         : "http://localhost:3000/app",
     rememberLastEmail: true,
     /** Public JWT for Outseta (Find under Sign Up > Advanced in Outseta) */

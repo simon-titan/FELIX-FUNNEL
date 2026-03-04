@@ -15,13 +15,12 @@ import {
   IconButton,
   Input,
   Textarea,
-  Select,
-  Switch,
-  FormControl,
-  FormLabel,
+  NativeSelect,
   Spinner,
   Alert,
 } from "@chakra-ui/react";
+import { Field } from "@/components/ui/field";
+import { Switch } from "@/components/ui/switch";
 import {
   DialogRoot,
   DialogContent,
@@ -265,10 +264,10 @@ export default function AdminFAQ() {
                 <Table.Row key={faq.id}>
                   <Table.Cell>
                     <VStack align="start" gap={1}>
-                      <Text fontWeight="medium" noOfLines={1}>
+                      <Text fontWeight="medium" lineClamp={1}>
                         {faq.title}
                       </Text>
-                      <Text fontSize="xs" color="gray.600" noOfLines={1}>
+                      <Text fontSize="xs" color="gray.600" lineClamp={1}>
                         {faq.slug}
                       </Text>
                     </VStack>
@@ -338,68 +337,66 @@ export default function AdminFAQ() {
           </DialogHeader>
           <DialogBody>
             <VStack gap={4} align="stretch">
-              <FormControl>
-                <FormLabel>Titel</FormLabel>
+              <Field label="Titel">
                 <Input
                   value={formData.title}
                   onChange={(e) => handleTitleChange(e.target.value)}
                   placeholder="FAQ Titel eingeben"
                 />
-              </FormControl>
+              </Field>
 
-              <FormControl>
-                <FormLabel>Slug</FormLabel>
+              <Field label="Slug">
                 <Input
                   value={formData.slug}
                   onChange={(e) => setFormData(prev => ({ ...prev, slug: e.target.value }))}
                   placeholder="URL-freundlicher Slug"
                 />
-              </FormControl>
+              </Field>
 
-              <FormControl>
-                <FormLabel>Kategorie</FormLabel>
-                <Select
-                  value={formData.category_id}
-                  onChange={(e) => setFormData(prev => ({ ...prev, category_id: e.target.value }))}
-                >
-                  <option value="">Keine Kategorie</option>
-                  {categories.map((cat) => (
-                    <option key={cat.id} value={cat.id}>
-                      {cat.name}
-                    </option>
-                  ))}
-                </Select>
-              </FormControl>
+              <Field label="Kategorie">
+                <NativeSelect.Root size="sm">
+                  <NativeSelect.Field
+                    value={formData.category_id}
+                    onChange={(e) => setFormData(prev => ({ ...prev, category_id: e.target.value }))}
+                  >
+                    <option value="">Keine Kategorie</option>
+                    {categories.map((cat) => (
+                      <option key={cat.id} value={cat.id}>
+                        {cat.name}
+                      </option>
+                    ))}
+                  </NativeSelect.Field>
+                  <NativeSelect.Indicator />
+                </NativeSelect.Root>
+              </Field>
 
-              <FormControl>
-                <FormLabel>Zusammenfassung (optional)</FormLabel>
+              <Field label="Zusammenfassung (optional)">
                 <Textarea
                   value={formData.summary}
                   onChange={(e) => setFormData(prev => ({ ...prev, summary: e.target.value }))}
                   placeholder="Kurze Zusammenfassung der FAQ"
                   rows={2}
                 />
-              </FormControl>
+              </Field>
 
-              <FormControl>
-                <FormLabel>Inhalt</FormLabel>
+              <Field label="Inhalt">
                 <Textarea
                   value={formData.content}
                   onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
                   placeholder="Detaillierte Antwort auf die FAQ"
                   rows={6}
                 />
-              </FormControl>
+              </Field>
 
-              <FormControl>
+              <Field>
                 <HStack justify="space-between">
-                  <FormLabel mb={0}>Veröffentlicht</FormLabel>
+                  <Text fontWeight="medium" mb={0}>Veröffentlicht</Text>
                   <Switch
                     checked={formData.is_published}
-                    onChange={(e) => setFormData(prev => ({ ...prev, is_published: e.target.checked }))}
+                    onCheckedChange={(e) => setFormData(prev => ({ ...prev, is_published: e.checked }))}
                   />
                 </HStack>
-              </FormControl>
+              </Field>
             </VStack>
           </DialogBody>
           <DialogFooter>

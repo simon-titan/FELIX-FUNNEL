@@ -31,8 +31,8 @@ export function MetaPixel() {
 
   // Prüfe Cookie Consent
   const hasConsent = () => {
-    const consent = CookieConsent.getConsent();
-    return consent?.categories?.[config.cookieCategory] === true;
+    const prefs = CookieConsent.getUserPreferences();
+    return prefs.acceptedCategories.includes(config.cookieCategory);
   };
 
   const fbq = (...args: any[]) => {

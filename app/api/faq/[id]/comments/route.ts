@@ -10,12 +10,12 @@ const createCommentSchema = z.object({
 
 // GET /api/faq/[id]/comments - Kommentare zu einer FAQ abrufen
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = createServerClient();
-    const { id } = params;
+    const { id } = await params;
 
     const { data: comments, error } = await supabase
       .from("faq_comments")
@@ -53,11 +53,11 @@ export async function GET(
 // POST /api/faq/[id]/comments - Neuen Kommentar erstellen
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = createServerClient();
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
 
     const validatedData = createCommentSchema.parse(body);

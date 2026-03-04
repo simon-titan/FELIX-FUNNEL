@@ -45,6 +45,10 @@ interface TrainingPlan {
       exercises: { name: string }[];
     }[];
   };
+  /** Optional, für Quiz-Empfehlung */
+  duration?: string;
+  difficulty?: string;
+  exercises?: string[];
 }
 
 interface QuizAnswers {
@@ -519,7 +523,7 @@ export default function Trainingsplan() {
                       Basierend auf deinen Antworten empfehlen wir dir:
                     </Text>
                     <Heading size="xl" color="green.600">
-                      {recommendedPlan.title}
+                      {recommendedPlan.name}
                     </Heading>
                   </Box>
 

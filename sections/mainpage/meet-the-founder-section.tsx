@@ -82,7 +82,7 @@ export const MeetTheFounderSection = ({
           {/* LinkedIn & Instagram direkt unter dem Kreis */}
           <HStack gap={4} justify="center">
             <chakra.a
-              href="https://instagram.com/pumpitclub"
+              href="https://www.instagram.com/felix_mangold/"
               target="_blank"
               rel="noopener noreferrer"
               w="12"
@@ -108,7 +108,7 @@ export const MeetTheFounderSection = ({
               <InstagramLogo size={24} weight="fill" />
             </chakra.a>
             <chakra.a
-              href="https://linkedin.com/in/pumpitclub"
+              href="https://www.linkedin.com/in/felix-mangold-performance-coaching/"
               target="_blank"
               rel="noopener noreferrer"
               w="12"

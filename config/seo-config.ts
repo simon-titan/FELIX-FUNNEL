@@ -7,4 +7,6 @@ export const seoConfig = {
   ogImage: "/og-image.jpg",
   robotsDisallowPaths: ["/app/*", "/api/*"],
   locale: "de_DE",
+  /** Twitter @handle für Open-Graph creator (z.B. "@deinhandle") */
+  twitterHandle: "",
 };

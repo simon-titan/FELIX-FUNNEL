@@ -64,7 +64,7 @@ export const FoodDetailCard = ({ food, isPremier }: FoodDetailCardProps) => {
             <Text fontWeight="bold" fontSize="sm" mb={1}>
               Detaillierte Nährwerte (Premier):
             </Text>
-            <Table.Root size="sm" variant="simple">
+            <Table.Root size="sm" variant="line">
               <Table.Body>
                 <Table.Row>
                   <Table.Cell>Zucker</Table.Cell>

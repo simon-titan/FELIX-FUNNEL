@@ -62,13 +62,34 @@ interface Category {
   sort_order: number;
 }
 
+interface FAQAnswer {
+  id: string;
+  answer: string;
+  author: string;
+  createdAt: string;
+  helpful: number;
+  isAccepted: boolean;
+}
+
+function formatDate(isoString: string): string {
+  try {
+    return new Date(isoString).toLocaleDateString("de-DE", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+  } catch {
+    return isoString;
+  }
+}
+
 interface UserQuestion {
   id: string;
   question: string;
   category: string;
   author: string;
   createdAt: string;
-  answers: { id: string; answer: string; author: string; createdAt: string; helpful: number; isAccepted: boolean }[];
+  answers: FAQAnswer[];
   views: number;
   status: "open" | "answered" | "closed";
 }
@@ -214,11 +235,11 @@ export default function FAQ() {
 
     const newAnswer: FAQAnswer = {
       id: Date.now().toString(),
-      questionId,
       answer,
       author: "Du",
       createdAt: new Date().toISOString(),
       helpful: 0,
+      isAccepted: false,
     };
 
     setUserQuestions(
@@ -359,7 +380,7 @@ export default function FAQ() {
                   <Card.Body p="0">
                     <Stack gap="0">
                       {filteredFAQs.map((faq) => (
-                        <Box key={faq.id} borderBottom="1px solid" borderColor="green.100" lastChild={{ borderBottom: "none" }}>
+                        <Box key={faq.id} borderBottom="1px solid" borderColor="green.100" _last={{ borderBottom: "none" }}>
                           <Box p="4">
                             <Stack gap="3">
                               <HStack justify="space-between" align="start">

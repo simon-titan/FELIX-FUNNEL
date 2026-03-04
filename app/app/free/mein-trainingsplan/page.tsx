@@ -35,6 +35,12 @@ interface TrainingPlan {
   gender: string | null;
   description: string;
   structure: any; // JSON structure with days and exercises
+  /** z.B. "12 Wochen" – optional, für createTrainingSchedule */
+  duration?: string;
+  /** z.B. "Anfänger" | "Fortgeschritten" – optional */
+  difficulty?: string;
+  /** Übungen als Strings (z.B. "Kniebeugen (3x12)") – optional */
+  exercises?: string[];
 }
 
 interface Exercise {
@@ -139,14 +145,15 @@ const parseExercise = (exerciseString: string): Exercise => {
   };
 };
 
-// Erstelle automatisch Trainingstage basierend auf Plan
+// Erstelle automatisch Trainingstage basierend auf Plan (falls duration/difficulty/exercises vorhanden)
 const createTrainingSchedule = (plan: TrainingPlan, startDate: Date = new Date()): TrainingDay[] => {
+  if (!plan.duration || !plan.exercises?.length) return [];
   const days: TrainingDay[] = [];
-  const weeks = parseInt(plan.duration.split(" ")[0]);
+  const weeks = parseInt(plan.duration.split(" ")[0], 10) || 4;
   const trainingDaysPerWeek = plan.difficulty === "Anfänger" ? 3 : plan.difficulty === "Fortgeschritten" ? 4 : 5;
-  
+
   // Trainingstage: Mo, Mi, Fr für Anfänger; Mo, Di, Do, Fr für Fortgeschritten; etc.
-  const dayOffsets = plan.difficulty === "Anfänger" 
+  const dayOffsets = plan.difficulty === "Anfänger"
     ? [1, 3, 5] // Mo, Mi, Fr
     : plan.difficulty === "Fortgeschritten"
     ? [1, 2, 4, 5] // Mo, Di, Do, Fr
@@ -156,7 +163,7 @@ const createTrainingSchedule = (plan: TrainingPlan, startDate: Date = new Date()
     for (const dayOffset of dayOffsets) {
       const date = new Date(startDate);
       date.setDate(startDate.getDate() + week * 7 + dayOffset - startDate.getDay());
-      
+
       const exercises = plan.exercises.map(parseExercise);
       days.push({
         date: formatDate(date),
@@ -459,7 +466,7 @@ END:VCALENDAR`;
                 >
                   ←
                 </Button>
-                <Heading size={{ base: "sm", md: "md" }} color="green.600" noOfLines={1} textAlign="center">
+                <Heading size={{ base: "sm", md: "md" }} color="green.600"  textAlign="center">
                   {monthYear}
                 </Heading>
                 <Button
@@ -593,7 +600,7 @@ END:VCALENDAR`;
                       <Card.Body p={{ base: "3", md: "4" }}>
                         <Stack gap="3">
                           <HStack justify="space-between" align="flex-start" gap="2" flexWrap="wrap">
-                            <Heading size="sm" color="green.600" flex="1" minW="0" noOfLines={2}>
+                            <Heading size="sm" color="green.600" flex="1" minW="0" >
                               {exercise.name}
                             </Heading>
                             <HStack gap="2" flexShrink={0}>

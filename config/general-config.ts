@@ -1,9 +1,9 @@
 export const generalConfig = {
-  name: "TitanDevelopment",
-  title: "TitanScale: Die Business-Software für skalierende Experten",
-  description: "TitanScale baut Ihr automatisches Sales- & Wissenssystem. Skalieren Sie als Coach Ihr Einkommen oder sichern Sie als Firma wertvolles Know-how. Jetzt entdecken.",
-  siteUrl: "https://www.titandevelopment.de",
+  name: "PumpItClub",
+  title: "Deine TRANSFORMATION startet hier!",
+  description: "PumpItClub unterstützt dich mit maßgeschneiderten Trainings- und Ernährungsplänen, Fortschritts-Tracking und Wissen rund um körperliche und mentale Performance. Transformiere deinen Körper und Geist – wissenschaftlich fundiert.",
+  siteUrl: "https://www.pumpitclub.de",
   support: {
-    email: "kontakt@titandevelopment.de",
+    email: "kontakt@pumpitclub.de",
   },
 };

@@ -1,70 +1,55 @@
-"use client";
-
 import { Inter } from "next/font/google";
-import Provider from "@/components/provider/provider";
-import Head from "next/head";
 import { projectConfig } from "@/config";
-import { useChatVisibility } from "@/utils/use-chat-visibility";
-import { Analytics } from "@/components/analytics";
-import "vanilla-cookieconsent/dist/cookieconsent.css";
-import "@/styles/cookie-banner-styles.css";
-import "@/styles/outseta-styles.css";
-import "@/styles/global-styles.css";
-import * as CookieConsent from "vanilla-cookieconsent";
-import { useEffect } from "react";
-import Script from "next/script";
+import ClientRootLayout from "./client-root-layout";
 
-// TODO: How could fonts be set in a better way? Best case it would be from the projectConfig.
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 });
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
-  useChatVisibility();
+export const metadata = {
+  title: {
+    default: projectConfig.general.name,
+    template: `%s | ${projectConfig.general.name}`,
+  },
+  description: projectConfig.general.description,
+  icons: {
+    icon: "/favicon-32x32.png",
+  },
+};
 
-  useEffect(() => {
-    if (projectConfig.cookieBannerOptions) {
-      CookieConsent.run(projectConfig.cookieBannerOptions as any);
-    } else {
-      console.warn("Cookie banner options are not defined in projectConfig.");
-    }
-  }, []);
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html suppressHydrationWarning className="cc--theme light">
-      <Head>
-        <title>Project Starter</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+          rel="stylesheet"
+        />
         <noscript>
           <meta httpEquiv="refresh" content="0; url=/javascript" />
         </noscript>
-      </Head>
-      <body className={inter.className} style={{ overflowX: "hidden", maxWidth: "100vw" }}>
-        <Script
-          id="outseta-config"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `var o_options = ${JSON.stringify(projectConfig.outsetaOptions)};`,
-          }}
-        />
-        <Script
-          id="outseta-script"
-          src="https://cdn.outseta.com/outseta.min.js"
-          data-options="o_options"
-          strategy="beforeInteractive"
-          onLoad={() => {
-            console.log("Outseta loaded successfully");
-          }}
-          onError={(e) => {
-            console.error("Error loading Outseta:", e);
-          }}
-        />
-        <Provider>{children}</Provider>
-        <Analytics />
+      </head>
+      <body
+        className={inter.className}
+        style={{ overflowX: "hidden", maxWidth: "100vw" }}
+      >
+        <ClientRootLayout>{children}</ClientRootLayout>
       </body>
     </html>
   );

@@ -342,12 +342,12 @@ export default function FatSecretPage() {
                               </Badge>
                             </HStack>
                             
-                            <Text fontWeight="bold" color="gray.800" noOfLines={2} mb={2}>
+                            <Text fontWeight="bold" color="gray.800"  mb={2}>
                               {recipe.recipe_name}
                             </Text>
                             
                             {recipe.recipe_description && (
-                              <Text fontSize="xs" color="gray.500" noOfLines={2} mb={3}>
+                              <Text fontSize="xs" color="gray.500"  mb={3}>
                                 {recipe.recipe_description}
                               </Text>
                             )}
@@ -473,7 +473,7 @@ export default function FatSecretPage() {
                             {recipeIcon.icon}
                           </Box>
                           <Box flex={1}>
-                            <Text fontWeight="bold" color="gray.800" noOfLines={2}>
+                            <Text fontWeight="bold" color="gray.800" >
                               {translatedName}
                             </Text>
                             <Text fontSize="xs" color="gray.500">{recipeIcon.label}</Text>
@@ -481,7 +481,7 @@ export default function FatSecretPage() {
                         </Box>
                         
                         {translatedDesc && (
-                          <Text fontSize="sm" color="gray.600" noOfLines={2} mb={2}>
+                          <Text fontSize="sm" color="gray.600"  mb={2}>
                             {translatedDesc}
                           </Text>
                         )}

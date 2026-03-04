@@ -1,5 +1,5 @@
 export const outsetaConfig = {
-  domain: "titandevelopment.outseta.com",
+  domain: "pumpitclub.outseta.com",
   load: "auth,profile,support,chat,emailList,leadCapture,nocode",
   monitorDom: true,
   tokenStorage: "cookie",

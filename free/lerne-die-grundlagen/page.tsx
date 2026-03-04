@@ -301,13 +301,15 @@ export default function LerneDieGrundlagen() {
             variant="ghost"
             colorPalette="green"
             size="sm"
-            leftIcon={<ArrowLeft size={16} />}
             onClick={() => {
               setSelectedModuleId(null);
               setSelectedLessonId(null);
             }}
           >
-            Zurück zur Übersicht
+            <HStack gap="2">
+              <ArrowLeft size={16} />
+              <span>Zurück zur Übersicht</span>
+            </HStack>
           </Button>
           <Heading size="lg" color="green.600">
             {selectedModule.title.toUpperCase()}

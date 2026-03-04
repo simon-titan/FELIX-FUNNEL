@@ -9,10 +9,7 @@ export const VimeoPlayer = ({ videoId }: VimeoPlayerProps) => {
     return (
       <AspectRatio ratio={16 / 9} w="full" maxW="4xl" mx="auto">
         <Box
-          as="iframe"
-          src={`https://player.vimeo.com/video/${videoId}`}
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
+          asChild
           borderRadius="l3"
           boxShadow="0 1px 12px -2px rgba(0, 0, 0, 0.06), 0 2px 24px -4px rgba(0, 0, 0, 0.04), 0 0 0 0.5px rgba(255, 255, 255, 0.04) inset, 0 0 24px -4px rgba(34, 197, 94, 0.12)"
           border="1px solid"
@@ -22,7 +19,15 @@ export const VimeoPlayer = ({ videoId }: VimeoPlayerProps) => {
             boxShadow:
               "0 2px 16px -2px rgba(0, 0, 0, 0.08), 0 4px 32px -4px rgba(0, 0, 0, 0.06), 0 0 0 0.5px rgba(255, 255, 255, 0.05) inset, 0 0 28px -4px rgba(34, 197, 94, 0.15)",
           }}
-        />
+        >
+          <iframe
+            src={`https://player.vimeo.com/video/${videoId}`}
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            style={{ width: "100%", height: "100%", border: "none", borderRadius: "inherit" }}
+            title="Vimeo video"
+          />
+        </Box>
       </AspectRatio>
     );
   }

@@ -143,7 +143,7 @@ export const BucketVideoPlayer = ({
     [totalSeconds]
   );
 
-  const ratioBoxProps = { ratio: 16 / 9 as const, w: "full" as const, mx: "auto" as const, ...(maxWidth !== "full" ? { maxW: maxWidth } : {}) };
+  const ratioBoxProps = { ratio: 16 / 9, w: "full" as const, mx: "auto" as const, ...(maxWidth !== "full" ? { maxW: maxWidth } : {}) };
 
   if (!src) {
     return (

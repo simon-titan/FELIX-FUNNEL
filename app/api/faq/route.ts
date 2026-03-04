@@ -26,9 +26,6 @@ export async function GET(request: NextRequest) {
         faq_categories (
           name,
           slug
-        ),
-        profiles:created_by (
-          full_name
         )
       `)
       .order("created_at", { ascending: false });

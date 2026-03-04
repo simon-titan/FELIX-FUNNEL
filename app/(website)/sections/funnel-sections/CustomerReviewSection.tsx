@@ -8,20 +8,16 @@ import {
   HStack,
   Stack,
   Icon,
-  Avatar,
   SimpleGrid,
   Card,
 } from "@chakra-ui/react";
+import { Avatar } from "@/components/ui/avatar";
 import { Section } from "@/components/layout/section";
 import {
   CheckCircle,
-  LinkedinLogo,
-  InstagramLogo,
-  GlobeSimple,
   PlayCircle,
 } from "@phosphor-icons/react/dist/ssr";
 import { Star } from "@phosphor-icons/react";
-import { Link } from "@/components/ui/link";
 
 const cardStyle = {
   red: {
@@ -42,70 +38,70 @@ const cardStyle = {
 
 const reviews = [
   {
-    name: "Max Mustermann",
+    name: "Emre K.",
     role: "Unternehmer",
     avatar: "https://bit.ly/dan-abramov",
-    videoHeadline: "So hat Max",
+    videoHeadline: "So hat Emre",
     videoHighlight: "sein Ziel erreicht",
-    videoSubline: "Sein Transformations-Video in 90 Sekunden.",
-    mainHeading: "Von wenig Energie zu Topform & mentaler Klarheit",
+    videoSubline: "Sein Erfahrung mit mir...",
+    mainHeading: "Von keinem Fortschritt zu Topform & mentaler Klarheit",
     successCards: [
-      { value: "-8 kg", label: "Fett in 12 Wo.", ...cardStyle.red },
+      { value: "+2 kg", label: "Muskeln in 4 Wochen", ...cardStyle.green },
       { value: "+30%", label: "Energie", ...cardStyle.green },
       { value: "100%", label: "Mentale Klarheit", ...cardStyle.green },
     ],
     checks: ["Muskelaufbau & Fettabbau", "Mehr Energie & Schlaf", "Mentale Klarheit"],
     ergebnisseLabel: "Seine Ergebnisse",
-    vorher: "Müde durch den Alltag, wenig Zeit für Training, Körper und Kopf nicht im Einklang.",
+    vorher: "Kein wirklicher Fortschritt, wenig Zeit für Training, Körper und Kopf nicht im Einklang.",
   },
   {
-    name: "Sarah Klein",
-    role: "Marketing-Leiterin",
+    name: "Kaan P.",
+    role: "Personal-Manger",
     avatar: "https://bit.ly/sage-adebayo",
-    videoHeadline: "Sarahs Weg:",
-    videoHighlight: "12 Wochen Transformation",
-    videoSubline: "Von Erschöpfung zu mehr Power im Job.",
-    mainHeading: "Endlich wieder Energie – im Büro und im Gym",
+    videoHeadline: "Kaans Weg:",
+    videoHighlight: "4 Wochen Transformation",
+    videoSubline: "Von keinem Fortschritt zu Topform & mentaler Klarheit.",
+    mainHeading: "Von keinem Fortschritt zu Topform & mentaler Klarheit",
     successCards: [
       { value: "-6 kg", label: "Fett", ...cardStyle.red },
-      { value: "+40%", label: "Energie", ...cardStyle.green },
-      { value: "3x", label: "Training/Woche", ...cardStyle.green },
+      { value: "+40%", label: "Mehr Trainingsgewicht", ...cardStyle.green },
+      { value: "120%", label: "Individuell", ...cardStyle.green },
     ],
     checks: ["Körperfett reduziert", "Besserer Schlaf", "Fester Trainingsrhythmus"],
     ergebnisseLabel: "Ihre Ergebnisse",
-    vorher: "Ständig erschöpft, kein Sport, Gewicht stieg. Job und Gesundheit liefen auseinander.",
+    vorher: "Ständig erschöpft, kein Sport, Trainingsgewicht steigt nicht. Job und Gesundheit liefen auseinander.",
   },
   {
-    name: "Thomas Weber",
+    name: "Markus W.",
     role: "Geschäftsführer",
-    avatar: "https://bit.ly/ryan-florence",
-    videoHeadline: "Thomas nach",
-    videoHighlight: "16 Wochen Coaching",
+    avatar: "",
+    videoHeadline: "Markus nach",
+    videoHighlight: "8 Wochen Coaching",
     videoSubline: "Körper und Business im Einklang.",
     mainHeading: "Rückenschmerzen weg, mehr Fokus im Alltag",
     successCards: [
       { value: "-10 kg", label: "Fett", ...cardStyle.red },
       { value: "+5 kg", label: "Muskeln", ...cardStyle.green },
-      { value: "0", label: "Rückenschmerzen", ...cardStyle.green },
+      { value: "0%", label: "Rückenschmerzen", ...cardStyle.green },
     ],
     checks: ["Keine Schmerzen mehr", "Mehr Kraft & Ausdauer", "Klarer Kopf"],
     ergebnisseLabel: "Seine Ergebnisse",
     vorher: "Rückenprobleme, Übergewicht, Stress. Keine Zeit für sich genommen.",
   },
   {
-    name: "Lisa Hoffmann",
-    role: "Selbstständige Beraterin",
+    name: "Sumit H.",
+    role: "Berater",
     avatar: "https://bit.ly/code-beast",
-    videoHeadline: "Lisa:",
+    videoHeadline: "Sumit:",
     videoHighlight: "Von Plan A zu Ergebnis A",
-    videoSubline: "Wie sie Training in den Alltag integriert hat.",
-    mainHeading: "Weniger Chaos, mehr Struktur – körperlich und mental",
+    videoSubline: "Wie er Training in den Alltag integriert hat.",
+    mainHeading: "Weniger Chaos, mehr Struktur, körperlich und mental!",
     successCards: [
       { value: "-5 kg", label: "in 12 Wo.", ...cardStyle.red },
-      { value: "+50%", label: "Wohlbefinden", ...cardStyle.green },
+      { value: "+0%", label: "Nackenschmerzen", ...cardStyle.green },
       { value: "4x", label: "Training/Woche", ...cardStyle.green },
     ],
-    checks: ["Konstantes Training", "Mehr Selbstvertrauen", "Struktur im Alltag"],
+    checks: ["Konstantes Training", "Mehr Selbstvertrauen", "Keine Schmerzen"],
     ergebnisseLabel: "Ihre Ergebnisse",
     vorher: "Unregelmäßig trainiert, Ernährung nebenbei. Fühlte mich unsicher im Körper.",
   },
@@ -193,10 +189,10 @@ function ReviewCard({
         </Box>
       </VStack>
 
-      {/* Desktop: Horizontal Layout mit Video links/rechts */}
+      {/* Desktop: Horizontal Layout mit Video links/rechts – Text vertikal mittig zum Video */}
       <HStack
         gap={{ md: 12, lg: 16 }}
-        alignItems="flex-start"
+        alignItems="center"
         w="full"
         display={{ base: "none", md: "flex" }}
         flexDirection={isEven ? "row" : "row-reverse"}
@@ -277,10 +273,11 @@ function ReviewCard({
         </HStack>
 
         <HStack gap={{ base: 3, md: 4 }} alignItems="center" flexWrap="wrap" justify={{ base: "center", md: "flex-start" }}>
-          <Avatar.Root size={{ base: "lg", md: "md" }}>
-            <Avatar.Image src={review.avatar} />
-            <Avatar.Fallback name={review.name} />
-          </Avatar.Root>
+          <Avatar
+            name={review.name}
+            src={review.avatar || undefined}
+            size={{ base: "lg", md: "md" }}
+          />
           <VStack alignItems={{ base: "center", md: "flex-start" }} gap={0}>
             <Text fontWeight="bold" fontSize={{ base: "xl", md: "lg" }} color="gray.800">
               {review.name}
@@ -365,26 +362,6 @@ function ReviewCard({
           </Text>
         </VStack>
 
-          <HStack gap={4} pt={3} flexWrap="wrap" justify="flex-start">
-            <Link href="#" textExternal fontSize="sm">
-              <HStack gap={2}>
-                <Icon as={LinkedinLogo} boxSize={4} />
-                <Text>LinkedIn</Text>
-              </HStack>
-            </Link>
-            <Link href="#" textExternal fontSize="sm">
-              <HStack gap={2}>
-                <Icon as={InstagramLogo} boxSize={4} />
-                <Text>Instagram</Text>
-              </HStack>
-            </Link>
-            <Link href="#" textExternal fontSize="sm">
-              <HStack gap={2}>
-                <Icon as={GlobeSimple} boxSize={4} />
-                <Text>Webseite</Text>
-              </HStack>
-            </Link>
-          </HStack>
         </VStack>
       </HStack>
 
@@ -407,10 +384,11 @@ function ReviewCard({
         </HStack>
 
         <HStack gap={4} alignItems="center" flexWrap="wrap" justify="center">
-          <Avatar.Root size="lg">
-            <Avatar.Image src={review.avatar} />
-            <Avatar.Fallback name={review.name} />
-          </Avatar.Root>
+          <Avatar
+            name={review.name}
+            src={review.avatar || undefined}
+            size="lg"
+          />
           <VStack alignItems="center" gap={0}>
             <Text fontWeight="bold" fontSize="xl" color="gray.800">
               {review.name}
@@ -495,26 +473,6 @@ function ReviewCard({
           </Text>
         </VStack>
 
-        <HStack gap={6} pt={3} flexWrap="wrap" justify="center">
-          <Link href="#" textExternal fontSize="md">
-            <HStack gap={2}>
-              <Icon as={LinkedinLogo} boxSize={5} />
-              <Text>LinkedIn</Text>
-            </HStack>
-          </Link>
-          <Link href="#" textExternal fontSize="md">
-            <HStack gap={2}>
-              <Icon as={InstagramLogo} boxSize={5} />
-              <Text>Instagram</Text>
-            </HStack>
-          </Link>
-          <Link href="#" textExternal fontSize="md">
-            <HStack gap={2}>
-              <Icon as={GlobeSimple} boxSize={5} />
-              <Text>Webseite</Text>
-            </HStack>
-          </Link>
-        </HStack>
       </VStack>
     </VStack>
   );

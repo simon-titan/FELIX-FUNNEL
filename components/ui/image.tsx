@@ -26,6 +26,9 @@ export const Image = ({
   const getValue = (size: string | number | undefined): number => {
     if (!size) return 100;
 
+    // Numerische Werte direkt durchreichen (z. B. width={440})
+    if (typeof size === "number") return size;
+
     // Handle pixel values directly (e.g. "640px")
     if (typeof size === "string" && size.endsWith("px")) {
       return parseInt(size, 10);
@@ -97,6 +100,7 @@ export const Image = ({
         alt={alt}
         width={getValue(width)}
         height={getValue(height)}
+        sizes={sizes}
       />
     </ChakraImage>
   );

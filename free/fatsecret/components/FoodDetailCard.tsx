@@ -27,7 +27,7 @@ export const FoodDetailCard = ({ food, isPremier }: FoodDetailCardProps) => {
     >
       <Stack gap={4}>
         <Box>
-          <Heading size="md" color="green.700">
+          <Heading size="md" color="green.600">
             {food.food_name}
           </Heading>
           <Text color="gray.500" fontSize="sm">

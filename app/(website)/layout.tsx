@@ -3,6 +3,8 @@
 import { usePathname } from "next/navigation";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { FunnelNavbar } from "@/components/layout/funnel-navbar";
+import { FunnelFooter } from "@/components/layout/funnel-footer";
 import { Box } from "@chakra-ui/react";
 
 export default function WebsiteLayout({
@@ -11,17 +13,16 @@ export default function WebsiteLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isFunnelPage = pathname?.startsWith("/Funnel");
+  const isFunnelRoot = pathname === "/" || pathname?.startsWith("/Funnel");
+  const isLegalPage = pathname?.startsWith("/legal");
 
-  if (isFunnelPage) {
-    return <>{children}</>;
-  }
+
 
   return (
     <>
-      <Navbar type="website" />
-      <Box as="main" overflowX="hidden" maxW="100vw">{children}</Box>
-      <Footer />
+      <FunnelNavbar />
+        <Box as="main" overflowX="hidden" maxW="100vw">{children}</Box>
+        <FunnelFooter />
     </>
   );
 }

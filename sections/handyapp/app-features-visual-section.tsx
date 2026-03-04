@@ -141,7 +141,7 @@ export const AppFeaturesVisualSection = () => {
                         border="1px solid"
                         borderColor="rgba(34, 197, 94, 0.2)"
                       >
-                        <Sparkle size={20} weight="fill" color="#22c55e" />
+                        <Sparkle size={20} weight="fill" color="#059669" />
                       </Box>
                       <Badge
                         bg="green.100"
@@ -165,7 +165,7 @@ export const AppFeaturesVisualSection = () => {
                       lineHeight="shorter"
                       textAlign={{ base: "center", lg: "left" }}
                       css={{
-                        background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                        background: 'linear-gradient(135deg, #34d399 0%, #059669 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text'
@@ -236,7 +236,7 @@ export const AppFeaturesVisualSection = () => {
                         border="1px solid"
                         borderColor="rgba(34, 197, 94, 0.2)"
                       >
-                        <TrendUp size={20} weight="fill" color="#22c55e" />
+                        <TrendUp size={20} weight="fill" color="#059669" />
                       </Box>
                       <Badge
                         bg="green.100"
@@ -260,7 +260,7 @@ export const AppFeaturesVisualSection = () => {
                       lineHeight="shorter"
                       textAlign={{ base: "center", lg: "right" }}
                       css={{
-                        background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                        background: 'linear-gradient(135deg, #34d399 0%, #059669 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text'

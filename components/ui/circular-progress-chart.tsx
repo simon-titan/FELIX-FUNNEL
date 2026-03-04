@@ -14,8 +14,8 @@ export const CircularProgressChart = ({
   progress,
   size = 120,
   strokeWidth = 8,
-  color = "#059669", // emerald-600
-  backgroundColor = "rgba(5, 150, 105, 0.12)",
+  color = "#059669",
+  backgroundColor = "#d1fae5",
   showPercentage = true,
   children,
 }: CircularProgressChartProps) => {

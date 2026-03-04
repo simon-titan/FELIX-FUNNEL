@@ -12,7 +12,8 @@ export default function FreeLayout({ children }: { children: React.ReactNode }) 
         as="main"
         ml={{ base: "0", md: "250px" }}
         px={{ base: "4", md: "6" }}
-        py="6"
+        pt={{ base: "14", md: "6" }}
+        pb="6"
         minH="100vh"
       >
         {children}

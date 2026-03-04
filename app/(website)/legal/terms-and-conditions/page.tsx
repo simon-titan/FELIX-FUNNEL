@@ -12,20 +12,26 @@ export const metadata = generateMetadata({
 export default function TermsAndConditions() {
   return (
     <Section>
-      <Prose mx="auto" size="lg" mt="28">
+      <Prose
+        mx="auto"
+        size="lg"
+        mt={{ base: "28", md: "32" }}
+        px={{ base: "4", sm: "5", md: "0" }}
+        py={{ base: "6", md: "8" }}
+      >
         <Markdown>
           {`
 # Allgemeine Geschäftsbedingungen
 
 **Gültig ab:** [Datum einfügen]
 
-Willkommen bei TitanScale! Diese Allgemeinen Geschäftsbedingungen regeln deine Nutzung unserer Website, Produkte und Dienstleistungen. Durch den Zugriff auf oder die Nutzung unserer Dienste erklärst du dich mit diesen Allgemeinen Geschäftsbedingungen einverstanden. Wenn du nicht einverstanden bist, nutze bitte unsere Dienste nicht.
+Willkommen bei PumpItClub! Diese Allgemeinen Geschäftsbedingungen regeln deine Nutzung unserer Website, Produkte und Dienstleistungen. Durch den Zugriff auf oder die Nutzung unserer Dienste erklärst du dich mit diesen Allgemeinen Geschäftsbedingungen einverstanden. Wenn du nicht einverstanden bist, nutze bitte unsere Dienste nicht.
 
 ## 1. Definitionen
 
--  **"Dienst"** bezieht sich auf die von TitanScale bereitgestellten Dienstleistungen, einschließlich, aber nicht beschränkt auf SaaS, Mitgliedschaftszugang, Online-Kurse, digitale Produkte.
+-  **"Dienst"** bezieht sich auf die von PumpItClub bereitgestellten Dienstleistungen, einschließlich, aber nicht beschränkt auf Mitgliedschaftszugang, Online-Kurse, Trainings- und Ernährungspläne sowie digitale Produkte.
 -  **"Nutzer"** bezieht sich auf jede Person oder Entität, die auf unsere Dienste zugreift oder sie nutzt.
--  **"Inhalt"** bezieht sich auf alle Texte, Bilder, Videos oder andere Materialien, die von TitanScale über den Dienst bereitgestellt werden.
+-  **"Inhalt"** bezieht sich auf alle Texte, Bilder, Videos oder andere Materialien, die von PumpItClub über den Dienst bereitgestellt werden.
 
 ## 2. Annahme der Bedingungen
 
@@ -42,7 +48,7 @@ Um auf bestimmte Funktionen unseres Dienstes zuzugreifen, musst du möglicherwei
 
 ## 5. Lizenz zur Nutzung des Dienstes
 
-Vorbehaltlich deiner Einhaltung dieser Bedingungen gewährt dir TitanScale eine eingeschränkte, nicht ausschließliche, nicht übertragbare Lizenz, auf den Dienst zuzugreifen und ihn für deine persönlichen oder internen Geschäftszwecke zu nutzen.
+Vorbehaltlich deiner Einhaltung dieser Bedingungen gewährt dir PumpItClub eine eingeschränkte, nicht ausschließliche, nicht übertragbare Lizenz, auf den Dienst zuzugreifen und ihn für deine persönlichen oder internen Geschäftszwecke zu nutzen.
 
 ## 6. Nutzerverhalten
 
@@ -54,7 +60,7 @@ Du erklärst dich damit einverstanden, den Dienst nicht zu nutzen für:
 
 ## 7. Geistiges Eigentum
 
-Alle über den Dienst bereitgestellten Inhalte sind Eigentum von TitanScale oder seiner Lizenzgeber und sind durch Gesetze zum geistigen Eigentum geschützt. Du darfst keine Inhalte ohne unsere ausdrückliche schriftliche Genehmigung reproduzieren, verteilen oder abgeleitete Werke erstellen.
+Alle über den Dienst bereitgestellten Inhalte sind Eigentum von PumpItClub oder seiner Lizenzgeber und sind durch Gesetze zum geistigen Eigentum geschützt. Du darfst keine Inhalte ohne unsere ausdrückliche schriftliche Genehmigung reproduzieren, verteilen oder abgeleitete Werke erstellen.
 
 ## 8. Kündigung
 
@@ -62,15 +68,15 @@ Wir können deinen Zugang zum Dienst jederzeit ohne vorherige Ankündigung oder 
 
 ## 9. Haftungsausschluss
 
-Der Dienst wird "wie besehen" und "wie verfügbar" bereitgestellt. TitanScale gibt keine Garantien, weder ausdrücklich noch stillschweigend, bezüglich des Dienstes, einschließlich, aber nicht beschränkt auf seine Verfügbarkeit, Zuverlässigkeit oder Eignung für einen bestimmten Zweck.
+Der Dienst wird „wie besehen“ und „wie verfügbar“ bereitgestellt. PumpItClub gibt keine Garantien, weder ausdrücklich noch stillschweigend, bezüglich des Dienstes, einschließlich, aber nicht beschränkt auf seine Verfügbarkeit, Zuverlässigkeit oder Eignung für einen bestimmten Zweck.
 
 ## 10. Haftungsbeschränkung
 
-Im gesetzlich zulässigen Umfang haftet TitanScale nicht für indirekte, zufällige, besondere, Folgeschäden oder Strafschäden, die aus deiner Nutzung des Dienstes entstehen oder damit zusammenhängen.
+Im gesetzlich zulässigen Umfang haftet PumpItClub nicht für indirekte, zufällige, besondere, Folgeschäden oder Strafschäden, die aus deiner Nutzung des Dienstes entstehen oder damit zusammenhängen.
 
 ## 11. Freistellung
 
-Du erklärst dich damit einverstanden, TitanScale, seine Tochtergesellschaften und ihre jeweiligen leitenden Angestellten, Direktoren, Mitarbeiter und Vertreter von allen Ansprüchen, Verlusten, Haftungen, Schäden, Kosten oder Ausgaben freizustellen, die aus deiner Nutzung des Dienstes oder deiner Verletzung dieser Bedingungen entstehen.
+Du erklärst dich damit einverstanden, PumpItClub, seine Tochtergesellschaften und ihre jeweiligen leitenden Angestellten, Direktoren, Mitarbeiter und Vertreter von allen Ansprüchen, Verlusten, Haftungen, Schäden, Kosten oder Ausgaben freizustellen, die aus deiner Nutzung des Dienstes oder deiner Verletzung dieser Bedingungen entstehen.
 
 ## 12. Änderungen der Bedingungen
 
@@ -84,7 +90,7 @@ Diese Bedingungen unterliegen den Gesetzen der Bundesrepublik Deutschland, ohne 
 
 Wenn du Fragen zu diesen Bedingungen hast, kontaktiere uns bitte unter:
 
-TitanScale  
+PumpItClub  
 [Deine Adresse]  
 [Deine E-Mail-Adresse]  
 [Deine Telefonnummer]  

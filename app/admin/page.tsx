@@ -10,19 +10,16 @@ import {
   VStack,
   HStack,
   SimpleGrid,
-  Stat,
   Badge,
   Button,
   Spinner,
 } from "@chakra-ui/react";
 import {
   Question,
-  Dumbbell,
   ChatCircle,
-  Eye,
-  ThumbsUp,
   Users,
 } from "@phosphor-icons/react";
+import { Link } from "@/components/ui/link";
 
 interface Stats {
   faqs: {
@@ -132,9 +129,11 @@ export default function AdminDashboard() {
               <Text fontSize="sm" color="gray.600">
                 Erstelle und bearbeite häufig gestellte Fragen
               </Text>
-              <Button as="a" href="/admin/faq" size="sm" colorPalette="green">
-                FAQ bearbeiten
-              </Button>
+              <Link href="/admin/faq">
+                <Button size="sm" colorPalette="green">
+                  FAQ bearbeiten
+                </Button>
+              </Link>
             </VStack>
           </Card.Body>
         </Card.Root>
@@ -143,15 +142,17 @@ export default function AdminDashboard() {
           <Card.Body>
             <VStack gap={3} align="start">
               <HStack gap={2}>
-                <Dumbbell size={20} color="var(--chakra-colors-green-500)" />
+                <Users size={20} color="var(--chakra-colors-green-500)" />
                 <Text fontWeight="medium">Trainingspläne</Text>
               </HStack>
               <Text fontSize="sm" color="gray.600">
                 Verwalte Trainingspläne und Übungen
               </Text>
-              <Button as="a" href="/admin/training" size="sm" colorPalette="green">
-                Pläne bearbeiten
-              </Button>
+              <Link href="/admin/training">
+                <Button size="sm" colorPalette="green">
+                  Pläne bearbeiten
+                </Button>
+              </Link>
             </VStack>
           </Card.Body>
         </Card.Root>
@@ -166,9 +167,11 @@ export default function AdminDashboard() {
               <Text fontSize="sm" color="gray.600">
                 Moderiere Video-Kommentare und antworte
               </Text>
-              <Button as="a" href="/admin/comments" size="sm" colorPalette="green">
-                Kommentare verwalten
-              </Button>
+              <Link href="/admin/comments">
+                <Button size="sm" colorPalette="green">
+                  Kommentare verwalten
+                </Button>
+              </Link>
             </VStack>
           </Card.Body>
         </Card.Root>
@@ -189,27 +192,22 @@ export default function AdminDashboard() {
                 </HStack>
 
                 <SimpleGrid columns={2} gap={3} w="full">
-                  <Stat.Root>
-                    <Stat.Label fontSize="sm">Gesamt</Stat.Label>
-                    <Stat.Value fontSize="2xl">{stats.faqs.total}</Stat.Value>
-                  </Stat.Root>
-
-                  <Stat.Root>
-                    <Stat.Label fontSize="sm">Veröffentlicht</Stat.Label>
-                    <Stat.Value fontSize="2xl" color="green.500">
-                      {stats.faqs.published}
-                    </Stat.Value>
-                  </Stat.Root>
-
-                  <Stat.Root>
-                    <Stat.Label fontSize="sm">Likes</Stat.Label>
-                    <Stat.Value fontSize="lg">{stats.faqs.totalLikes}</Stat.Value>
-                  </Stat.Root>
-
-                  <Stat.Root>
-                    <Stat.Label fontSize="sm">Kommentare</Stat.Label>
-                    <Stat.Value fontSize="lg">{stats.faqs.totalComments}</Stat.Value>
-                  </Stat.Root>
+                  <VStack align="start" gap={0}>
+                    <Text fontSize="sm" color="gray.600">Gesamt</Text>
+                    <Text fontSize="2xl" fontWeight="bold">{stats.faqs.total}</Text>
+                  </VStack>
+                  <VStack align="start" gap={0}>
+                    <Text fontSize="sm" color="gray.600">Veröffentlicht</Text>
+                    <Text fontSize="2xl" fontWeight="bold" color="green.500">{stats.faqs.published}</Text>
+                  </VStack>
+                  <VStack align="start" gap={0}>
+                    <Text fontSize="sm" color="gray.600">Likes</Text>
+                    <Text fontSize="lg" fontWeight="bold">{stats.faqs.totalLikes}</Text>
+                  </VStack>
+                  <VStack align="start" gap={0}>
+                    <Text fontSize="sm" color="gray.600">Kommentare</Text>
+                    <Text fontSize="lg" fontWeight="bold">{stats.faqs.totalComments}</Text>
+                  </VStack>
                 </SimpleGrid>
 
                 <HStack gap={2}>
@@ -226,14 +224,14 @@ export default function AdminDashboard() {
             <Card.Body>
               <VStack gap={4} align="start">
                 <HStack gap={2}>
-                  <Dumbbell size={20} color="var(--chakra-colors-green-500)" />
+                  <Users size={20} color="var(--chakra-colors-green-500)" />
                   <Text fontWeight="medium">Trainingspläne</Text>
                 </HStack>
 
-                <Stat.Root>
-                  <Stat.Label fontSize="sm">Anzahl</Stat.Label>
-                  <Stat.Value fontSize="3xl">{stats.trainingPlans.total}</Stat.Value>
-                </Stat.Root>
+                <VStack align="start" gap={0}>
+                  <Text fontSize="sm" color="gray.600">Anzahl</Text>
+                  <Text fontSize="3xl" fontWeight="bold">{stats.trainingPlans.total}</Text>
+                </VStack>
 
                 <Text fontSize="sm" color="gray.600">
                   Aktive Trainingsprogramme
@@ -251,10 +249,10 @@ export default function AdminDashboard() {
                   <Text fontWeight="medium">Kommentare</Text>
                 </HStack>
 
-                <Stat.Root>
-                  <Stat.Label fontSize="sm">Video-Kommentare</Stat.Label>
-                  <Stat.Value fontSize="3xl">{stats.comments.total}</Stat.Value>
-                </Stat.Root>
+                <VStack align="start" gap={0}>
+                  <Text fontSize="sm" color="gray.600">Video-Kommentare</Text>
+                  <Text fontSize="3xl" fontWeight="bold">{stats.comments.total}</Text>
+                </VStack>
 
                 <Text fontSize="sm" color="gray.600">
                   Zu moderierende Kommentare

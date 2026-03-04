@@ -27,9 +27,6 @@ export async function GET(
         faq_categories (
           name,
           slug
-        ),
-        profiles:created_by (
-          full_name
         )
       `)
       .eq("id", id)

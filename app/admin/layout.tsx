@@ -16,11 +16,12 @@ import {
 import {
   House,
   Question,
-  Dumbbell,
+  Users,
   ChatCircle,
   SignOut,
   Shield,
 } from "@phosphor-icons/react";
+import { Link } from "@/components/ui/link";
 
 interface AdminSession {
   loggedIn: boolean;
@@ -37,7 +38,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { href: "/admin", label: "Dashboard", icon: House },
   { href: "/admin/faq", label: "FAQ Verwaltung", icon: Question },
-  { href: "/admin/training", label: "Trainingspläne", icon: Dumbbell },
+  { href: "/admin/training", label: "Trainingspläne", icon: Users },
   { href: "/admin/comments", label: "Video Kommentare", icon: ChatCircle },
 ];
 
@@ -111,7 +112,7 @@ export default function AdminLayout({
 
   return (
     <Box minH="100vh" bg="gray.50">
-      <HStack align="stretch" spacing={0}>
+      <HStack align="stretch" gap={0}>
         {/* Sidebar */}
         <Box
           w={isMobile ? "full" : "250px"}
@@ -125,12 +126,12 @@ export default function AdminLayout({
           h={isMobile ? "auto" : "100vh"}
           overflowY="auto"
         >
-          <VStack align="stretch" spacing={0} h="full">
+          <VStack align="stretch" gap={0} h="full">
             {/* Header */}
             <Box p={6} borderBottom="1px solid" borderColor="gray.200">
               <HStack gap={3}>
                 <Shield size={24} color="var(--chakra-colors-green-500)" />
-                <VStack align="start" gap={0} spacing={0}>
+                <VStack align="start" gap={0}>
                   <Heading size="sm">Admin Panel</Heading>
                   <Text fontSize="xs" color="gray.600">
                     Pump-It-Club
@@ -146,21 +147,21 @@ export default function AdminLayout({
                 const Icon = item.icon;
 
                 return (
-                  <Button
-                    key={item.href}
-                    as="a"
-                    href={item.href}
-                    variant={isActive ? "solid" : "ghost"}
-                    colorPalette="green"
-                    justifyContent="flex-start"
-                    h={10}
-                    px={3}
-                  >
-                    <HStack gap={3} w="full">
-                      <Icon size={18} />
-                      <Text fontSize="sm">{item.label}</Text>
-                    </HStack>
-                  </Button>
+                  <Link key={item.href} href={item.href}>
+                    <Button
+                      variant={isActive ? "solid" : "ghost"}
+                      colorPalette="green"
+                      justifyContent="flex-start"
+                      h={10}
+                      px={3}
+                      w="full"
+                    >
+                      <HStack gap={3} w="full">
+                        <Icon size={18} />
+                        <Text fontSize="sm">{item.label}</Text>
+                      </HStack>
+                    </Button>
+                  </Link>
                 );
               })}
             </VStack>
@@ -170,7 +171,7 @@ export default function AdminLayout({
             {/* User Info & Logout */}
             <Box p={4}>
               <VStack gap={3}>
-                <VStack align="start" gap={0} spacing={0} w="full">
+                <VStack align="start" gap={0} w="full">
                   <Text fontSize="sm" fontWeight="medium">
                     {session.username || "Admin"}
                   </Text>

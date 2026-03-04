@@ -232,7 +232,6 @@ export default function MeinTrainingsplan() {
         setCurrentPlan(null);
       });
   }, [getAccessToken]);
-  }, []);
 
   // Speichere Trainingstage in localStorage
   useEffect(() => {
@@ -437,49 +436,53 @@ END:VCALENDAR`;
 
   return (
     <Section header>
-      <Stack gap="6">
+      <Stack gap={{ base: "4", md: "6" }}>
         <Stack gap="2">
-          <Heading>Mein Trainingsplan</Heading>
-          <Text color="green.700">
+          <Heading size={{ base: "lg", md: "xl" }}>Mein Trainingsplan</Heading>
+          <Text color="green.700" fontSize={{ base: "sm", md: "md" }}>
             Verwalte deine Trainingstage im Kalender und trage deine Werte ein.
           </Text>
         </Stack>
 
         {/* Kalender */}
-        <Card.Root>
-          <Card.Body>
-            <Stack gap="4">
+        <Card.Root overflow="hidden">
+          <Card.Body p={{ base: "3", md: "6" }}>
+            <Stack gap={{ base: "3", md: "4" }}>
               {/* Monats-Navigation */}
-              <HStack justify="space-between" align="center">
+              <HStack justify="space-between" align="center" flexWrap="nowrap">
                 <Button
                   variant="ghost"
                   colorPalette="green"
                   onClick={() => navigateMonth("prev")}
+                  size={{ base: "sm", md: "md" }}
+                  minW={{ base: "8", md: "10" }}
                 >
                   ←
                 </Button>
-                <Heading size="md" color="green.800">
+                <Heading size={{ base: "sm", md: "md" }} color="green.600" noOfLines={1} textAlign="center">
                   {monthYear}
                 </Heading>
                 <Button
                   variant="ghost"
                   colorPalette="green"
                   onClick={() => navigateMonth("next")}
+                  size={{ base: "sm", md: "md" }}
+                  minW={{ base: "8", md: "10" }}
                 >
                   →
                 </Button>
               </HStack>
 
               {/* Wochentage-Header */}
-              <SimpleGrid columns={7} gap="2">
+              <SimpleGrid columns={7} gap={{ base: "1", md: "2" }} minW="0">
                 {weekDays.map((day) => (
                   <Box
                     key={day}
                     textAlign="center"
                     fontWeight="bold"
                     color="green.700"
-                    fontSize="sm"
-                    py="2"
+                    fontSize={{ base: "xs", md: "sm" }}
+                    py={{ base: "1", md: "2" }}
                   >
                     {day}
                   </Box>
@@ -487,21 +490,22 @@ END:VCALENDAR`;
               </SimpleGrid>
 
               {/* Kalender-Tage */}
-              <SimpleGrid columns={7} gap="2">
+              <SimpleGrid columns={7} gap={{ base: "1", md: "2" }} minW="0">
                 {daysInMonth.map((day, index) => {
                   const dateString = formatDate(day);
                   const trainingDay = getTrainingDay(dateString);
                   const isCurrentMonth = day.getMonth() === currentDate.getMonth();
                   const isToday = dateString === formatDate(new Date());
+                  const hasTraining = trainingDay && trainingDay.exercises.length > 0;
 
                   return (
                     <Box
                       key={index}
-                      minH="80px"
-                      p="2"
+                      minH={{ base: "48px", md: "80px" }}
+                      p={{ base: "1", md: "2" }}
                       border="1px solid"
                       borderColor={isCurrentMonth ? "green.200" : "gray.200"}
-                      borderRadius="md"
+                      borderRadius={{ base: "sm", md: "md" }}
                       bg={isCurrentMonth ? (isToday ? "green.50" : "white") : "gray.50"}
                       cursor="pointer"
                       onClick={() => handleDateClick(dateString)}
@@ -512,35 +516,57 @@ END:VCALENDAR`;
                       position="relative"
                     >
                       <Text
-                        fontSize="sm"
+                        fontSize={{ base: "xs", md: "sm" }}
                         color={isCurrentMonth ? "green.800" : "gray.400"}
                         fontWeight={isToday ? "bold" : "normal"}
-                        mb="1"
+                        mb={{ base: "0", md: "1" }}
                       >
                         {day.getDate()}
                       </Text>
-                      {trainingDay && trainingDay.exercises.length > 0 && (
-                        <Stack gap="1">
-                          {trainingDay.exercises.slice(0, 2).map((exercise) => (
+                      {hasTraining && (
+                        <>
+                          {/* Mobile: nur Indikator */}
+                          <Box display={{ base: "block", md: "none" }} mt="0.5">
                             <Box
-                              key={exercise.id}
                               bg="green.500"
                               color="white"
-                              px="1"
-                              py="0.5"
-                              borderRadius="sm"
-                              fontSize="xs"
-                              fontWeight="medium"
-                            >
-                              {exercise.name}
-                            </Box>
-                          ))}
-                          {trainingDay.exercises.length > 2 && (
-                            <Text fontSize="xs" color="green.600" fontWeight="medium">
-                              +{trainingDay.exercises.length - 2} weitere
-                            </Text>
-                          )}
-                        </Stack>
+                              borderRadius="full"
+                              w="6px"
+                              h="6px"
+                              mx="auto"
+                            />
+                            {trainingDay!.exercises.length > 1 && (
+                              <Text fontSize="xs" color="green.600" fontWeight="medium">
+                                +{trainingDay!.exercises.length - 1}
+                              </Text>
+                            )}
+                          </Box>
+                          {/* Desktop: Übungsnamen */}
+                          <Stack gap="1" display={{ base: "none", md: "flex" }}>
+                            {trainingDay!.exercises.slice(0, 2).map((exercise) => (
+                              <Box
+                                key={exercise.id}
+                                bg="green.500"
+                                color="white"
+                                px="1"
+                                py="0.5"
+                                borderRadius="sm"
+                                fontSize="xs"
+                                fontWeight="medium"
+                                overflow="hidden"
+                                textOverflow="ellipsis"
+                                whiteSpace="nowrap"
+                              >
+                                {exercise.name}
+                              </Box>
+                            ))}
+                            {trainingDay!.exercises.length > 2 && (
+                              <Text fontSize="xs" color="green.600" fontWeight="medium">
+                                +{trainingDay!.exercises.length - 2} weitere
+                              </Text>
+                            )}
+                          </Stack>
+                        </>
                       )}
                     </Box>
                   );
@@ -552,7 +578,7 @@ END:VCALENDAR`;
 
         {/* Dialog für Trainingstag */}
         <DialogRoot open={isDialogOpen} onOpenChange={(e) => !e.open && setIsDialogOpen(false)}>
-          <DialogContent maxW="600px">
+          <DialogContent maxW={{ base: "100%", sm: "90vw", md: "600px" }} w={{ base: "calc(100% - 2rem)", md: "auto" }} mx="4">
             <DialogHeader>
               <DialogTitle>
                 {selectedDate ? `Training am ${formatDateDisplay(selectedDate)}` : "Training"}
@@ -564,13 +590,13 @@ END:VCALENDAR`;
                   {/* Bestehende Übungen */}
                   {getTrainingDay(selectedDate)?.exercises.map((exercise) => (
                     <Card.Root key={exercise.id} borderColor="green.200">
-                      <Card.Body>
+                      <Card.Body p={{ base: "3", md: "4" }}>
                         <Stack gap="3">
-                          <HStack justify="space-between">
-                            <Heading size="sm" color="green.800">
+                          <HStack justify="space-between" align="flex-start" gap="2" flexWrap="wrap">
+                            <Heading size="sm" color="green.600" flex="1" minW="0" noOfLines={2}>
                               {exercise.name}
                             </Heading>
-                            <HStack gap="2">
+                            <HStack gap="2" flexShrink={0}>
                               <Button
                                 size="sm"
                                 variant="ghost"
@@ -589,7 +615,7 @@ END:VCALENDAR`;
                               </Button>
                             </HStack>
                           </HStack>
-                          <HStack gap="4" fontSize="sm" color="green.700">
+                          <HStack gap="4" fontSize="sm" color="green.700" flexWrap="wrap">
                             <Text>
                               <strong>{exercise.sets}</strong> Sätze
                             </Text>
@@ -605,6 +631,7 @@ END:VCALENDAR`;
                             variant="outline"
                             colorPalette="green"
                             onClick={() => exportToCalendar(getTrainingDay(selectedDate!)!)}
+                            w={{ base: "full", md: "auto" }}
                           >
                             <HStack gap="2">
                               <CalendarBlank size={16} />
@@ -620,7 +647,7 @@ END:VCALENDAR`;
                   <Card.Root borderColor="green.300" borderWidth="2px">
                     <Card.Body>
                       <Stack gap="4">
-                        <Heading size="sm" color="green.800">
+                        <Heading size="sm" color="green.600">
                           {editingExercise ? "Übung bearbeiten" : "Neue Übung hinzufügen"}
                         </Heading>
 
@@ -633,7 +660,7 @@ END:VCALENDAR`;
                           colorPalette="green"
                         />
 
-                        <SimpleGrid columns={3} gap="4">
+                        <SimpleGrid columns={{ base: 1, md: 3 }} gap="4">
                           <Stack gap="2">
                             <Text fontSize="sm" fontWeight="medium" color="green.700">
                               Sätze
@@ -687,6 +714,7 @@ END:VCALENDAR`;
                           colorPalette="green"
                           onClick={handleAddExercise}
                           disabled={!exerciseForm.name}
+                          w={{ base: "full", md: "auto" }}
                         >
                           <HStack gap="2">
                             <Plus size={20} />
@@ -699,13 +727,13 @@ END:VCALENDAR`;
 
                   {/* Verschieben-Hinweis */}
                   <Box
-                    p="3"
+                    p={{ base: "2", md: "3" }}
                     bg="green.50"
                     borderRadius="md"
                     border="1px solid"
                     borderColor="green.200"
                   >
-                    <Text fontSize="sm" color="green.700">
+                    <Text fontSize={{ base: "xs", md: "sm" }} color="green.700">
                       💡 Tipp: Klicke auf einen anderen Tag im Kalender, um dieses Training dorthin
                       zu verschieben.
                     </Text>

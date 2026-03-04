@@ -65,7 +65,7 @@ const StatisticCard = ({ value, label }: StatisticCardProps) => {
           fontWeight="900"
           lineHeight="1"
           css={{
-            background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%)',
+            background: 'linear-gradient(135deg, #34d399 0%, #059669 50%, #047857 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'

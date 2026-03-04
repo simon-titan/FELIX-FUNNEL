@@ -178,12 +178,12 @@ export default function LerneDieGrundlagen() {
           {moduleProgress.map((module) => (
             <Card.Root
               key={module.id}
-              bg="rgba(5, 150, 105, 0.06)"
+              bg="green.50"
               backdropFilter="blur(12px)"
               borderWidth="1px"
-              borderColor="rgba(5, 150, 105, 0.25)"
+              borderColor="green.200"
               shadow="sm"
-              _hover={{ shadow: "lg", borderColor: "rgba(5, 150, 105, 0.4)" }}
+              _hover={{ shadow: "lg", borderColor: "green.400" }}
             >
               <Card.Body>
                 <Stack gap="4">
@@ -199,7 +199,7 @@ export default function LerneDieGrundlagen() {
                     <CircularProgressChart
                       progress={module.progress}
                       size={88}
-                      color="#059669"
+                      color="green.600"
                       strokeWidth={5}
                     />
                   </HStack>

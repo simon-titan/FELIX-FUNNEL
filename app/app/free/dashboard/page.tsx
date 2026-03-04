@@ -30,7 +30,7 @@ export default function Dashboard() {
   const [courseModules, setCourseModules] = useState<CourseModule[]>([]);
   const [courseProgressMap, setCourseProgressMap] = useState<Record<string, { watched_seconds: number; completed: boolean; last_watched_at: string }>>({});
   const [trainingPlans, setTrainingPlans] = useState<TrainingPlan[]>([]);
-  const { getAccessToken } = useAuth();
+  const { getAccessToken, user } = useAuth();
 
   // Kurs: Module von API
   useEffect(() => {
@@ -112,13 +112,18 @@ export default function Dashboard() {
     });
   }, [courseModules, courseProgressMap]);
 
+  const firstName = user?.FirstName?.trim();
+  const welcomeText = firstName
+    ? `Willkommen zurück, ${firstName}! Hier ist deine Übersicht über Kurs und Trainingspläne.`
+    : "Willkommen zurück! Hier ist deine Übersicht über Kurs und Trainingspläne.";
+
   return (
-    <Section header>
+    <Section header size="xs">
       <Stack gap="6">
         <Stack gap="2">
-          <Heading>Dashboard</Heading>
+          <Heading>Deine Übersicht</Heading>
           <Text color="green.700">
-            Willkommen zurück! Hier ist deine Übersicht über Kurs und Trainingspläne.
+            {welcomeText}
           </Text>
         </Stack>
 
@@ -128,10 +133,10 @@ export default function Dashboard() {
         {/* Kursübersicht */}
         {moduleProgress.length > 0 && (
           <Card.Root
-            bg="rgba(5, 150, 105, 0.06)"
+            bg="green.50"
             backdropFilter="blur(12px)"
             borderWidth="1px"
-            borderColor="rgba(5, 150, 105, 0.25)"
+            borderColor="green.200"
             shadow="sm"
           >
             <Card.Body>
@@ -154,11 +159,11 @@ export default function Dashboard() {
                   {moduleProgress.map((module) => (
                     <Card.Root
                       key={module.id}
-                      bg="rgba(5, 150, 105, 0.04)"
+                      bg="green.50"
                       backdropFilter="blur(8px)"
                       borderWidth="1px"
-                      borderColor="rgba(5, 150, 105, 0.2)"
-                      _hover={{ borderColor: "rgba(5, 150, 105, 0.4)", shadow: "md" }}
+                      borderColor="green.200"
+                      _hover={{ borderColor: "green.400", shadow: "md" }}
                     >
                       <Card.Body>
                         <Stack gap="4">
@@ -182,7 +187,7 @@ export default function Dashboard() {
                             <CircularProgressChart
                               progress={module.progress}
                               size={88}
-                              color="#059669"
+                              color="green.600"
                               strokeWidth={5}
                             />
                             <Link href={module.videos[0] ? `/app/free/lerne-die-grundlagen/video/${module.videos[0].id}` : `/app/free/lerne-die-grundlagen`}>

@@ -15,7 +15,6 @@ import {
   Tabs,
   Badge,
   SimpleGrid,
-  useToast,
   Spinner,
   Alert,
 } from "@chakra-ui/react";
@@ -89,7 +88,6 @@ export default function FAQ() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const toast = useToast();
   const { getAccessToken } = useAuth();
 
   // Lade FAQs und Kategorien von der API
@@ -447,7 +445,7 @@ export default function FAQ() {
                                     {categoryLabels[question.category]}
                                   </Badge>
                                 </HStack>
-                                <Heading size="md" color="green.800">
+                                <Heading size="md" color="green.600">
                                   {question.question}
                                 </Heading>
                                 <HStack gap="3" fontSize="xs" color="green.600">
@@ -563,7 +561,7 @@ export default function FAQ() {
               <Card.Root>
                 <Card.Body>
                   <Stack gap="4">
-                    <Heading size="sm" color="green.800">
+                    <Heading size="sm" color="green.600">
                       Neue Frage stellen
                     </Heading>
 

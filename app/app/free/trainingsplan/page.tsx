@@ -27,6 +27,8 @@ import {
   DialogCloseTrigger,
 } from "@/components/ui/dialog";
 import { Section } from "@/components/layout/section";
+import { Link } from "@/components/ui/link";
+import { calConfig } from "@/config/cal-config";
 import { CheckCircle, Plus, Sparkle, ArrowRight, ArrowLeft, X, Trash } from "@phosphor-icons/react";
 import { useAuth } from "@/components/provider/auth-provider";
 import { useRouter } from "next/navigation";
@@ -417,7 +419,7 @@ export default function Trainingsplan() {
           <Card.Body>
             <Stack gap="4" direction={{ base: "column", md: "row" }} align={{ base: "stretch", md: "center" }}>
               <Stack gap="2" flex="1">
-                <Heading size="md" color="green.800">
+                <Heading size="md" color="green.600">
                   Finde deinen perfekten Plan
                 </Heading>
                 <Text color="green.700">
@@ -436,13 +438,16 @@ export default function Trainingsplan() {
                     <Text>Plan finden</Text>
                   </HStack>
                 </Button>
-                <Button
-                  colorPalette="green"
-                  variant="outline"
-                  size="lg"
-                >
-                  1:1 Betreuung buchen
-                </Button>
+                <Link href={calConfig.bookingUrl} target="_blank" rel="noopener noreferrer" _hover={{ textDecoration: "none" }}>
+                  <Button
+                    colorPalette="green"
+                    variant="outline"
+                    size="lg"
+                    as="span"
+                  >
+                    1:1 Betreuung buchen
+                  </Button>
+                </Link>
               </Stack>
             </Stack>
           </Card.Body>
@@ -576,7 +581,7 @@ export default function Trainingsplan() {
                   </Stack>
 
                   <Stack gap="4">
-                    <Heading size="md" color="green.800">
+                    <Heading size="md" color="green.600">
                       {currentQuestion.question}
                     </Heading>
 

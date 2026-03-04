@@ -216,7 +216,7 @@ export default function FatSecretPage() {
 
   return (
     <VStack gap={8} align="stretch">
-      <Heading color="green.700">Ernährungs-Datenbank (FatSecret)</Heading>
+      <Heading color="green.600">Ernährungs-Datenbank (FatSecret)</Heading>
 
       <Tabs.Root value={activeTab} onValueChange={(e) => {
           setActiveTab(e.value);
@@ -283,7 +283,7 @@ export default function FatSecretPage() {
                   <HStack mb={4} gap={3}>
                     <Text fontSize="2xl">💪</Text>
                     <Box flex={1}>
-                      <Heading size="md" color="green.700">
+                      <Heading size="md" color="green.600">
                         {currentSearchQuery 
                           ? `Fitness-Empfehlungen für "${currentSearchQuery}"` 
                           : "Unsere Empfehlung"}

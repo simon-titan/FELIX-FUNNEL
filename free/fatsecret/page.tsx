@@ -145,7 +145,7 @@ export default function FatSecretPage() {
 
   return (
     <VStack gap={8} align="stretch">
-      <Heading color="green.700">Ernährungs-Datenbank (FatSecret)</Heading>
+      <Heading color="green.600">Ernährungs-Datenbank (FatSecret)</Heading>
 
       <Tabs.Root value={activeTab} onValueChange={(e) => {
           setActiveTab(e.value);

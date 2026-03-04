@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import {
-  Heading,
   Text,
   Card,
   Button,
@@ -11,9 +10,7 @@ import {
   Box,
   HStack,
   VStack,
-  Progress,
   Badge,
-  SimpleGrid,
   Spinner,
   Alert,
   Textarea,
@@ -367,374 +364,241 @@ export default function VideoDetailPage() {
         {/* 1:1 Betreuung CTA Banner */}
         <CtaBetreuungBanner />
 
-        {/* Video Player */}
-        <Box w="full" maxW="full" position="relative">
-          {/* Video Titel und Modul-Fortschritt oben */}
-          <Box
-            position="absolute"
-            top="4"
-            left="4"
-            right="4"
-            zIndex="10"
-            display="flex"
-            justifyContent="space-between"
-            alignItems="flex-start"
-            gap="4"
-          >
-            {/* Video Titel */}
-            <Box
-              bg="rgba(5, 150, 105, 0.08)"
-              backdropFilter="blur(12px)"
-              borderRadius="lg"
-              px="4"
-              py="2"
-              borderWidth="1px"
-              borderColor="rgba(5, 150, 105, 0.25)"
-              shadow="md"
-              maxW="60%"
-              _hover={{ borderColor: "rgba(5, 150, 105, 0.4)" }}
-              transition="all 0.2s"
-            >
-              <Text fontSize="md" fontWeight="600" color="white" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
-                {currentVideo.title}
-              </Text>
-            </Box>
-
-            {/* Modul-Fortschritt */}
-            <Box
-              bg="rgba(5, 150, 105, 0.08)"
-              backdropFilter="blur(12px)"
-              borderRadius="lg"
-              px="3"
-              py="2"
-              borderWidth="1px"
-              borderColor="rgba(5, 150, 105, 0.25)"
-              shadow="md"
-              display="flex"
-              alignItems="center"
-              gap="2"
-              _hover={{ borderColor: "rgba(5, 150, 105, 0.4)" }}
-              transition="all 0.2s"
-            >
-              <CircularProgressChart
-                progress={moduleProgress}
-                size={32}
-                color="#059669"
-                strokeWidth={3}
-              />
-              <VStack align="flex-start" gap="0">
-                <Text fontSize="xs" fontWeight="600" color="white">
-                  Modul
-                </Text>
-                <Text fontSize="xs" color="rgba(255,255,255,0.8)">
-                  {moduleProgress}%
-                </Text>
-              </VStack>
-            </Box>
-          </Box>
-
+        {/* Video-Player in grünem Glassmorph-Kasten */}
+        <Box
+          w="full"
+          bg="green.50"
+            backdropFilter="blur(12px)"
+            borderRadius="xl"
+            p="3"
+            borderWidth="1px"
+            borderColor="green.200"
+          shadow="md"
+        >
           <BucketVideoPlayer
             src={getVideoUrl(currentVideo.video_key)}
             onTimeUpdate={handleTimeUpdate}
             maxWidth="full"
+            durationMinutes={currentVideo.duration}
+            initialSeekSeconds={progress[currentVideo.id]?.watched_seconds ?? 0}
           />
-          <Box
-            position="absolute"
-            bottom="0"
-            left="0"
-            right="0"
-            px="4"
-            py="3"
-            bg="linear-gradient(to top, rgba(0,0,0,0.75), transparent)"
-            color="white"
-            pointerEvents="none"
-          >
-            <HStack gap="3" align="center">
-              <Progress.Root value={currentVideoProgress} colorPalette="green" size="sm" flex="1">
-                <Progress.Track bg="white/20">
-                  <Progress.Range />
-                </Progress.Track>
-              </Progress.Root>
-              <Text fontSize="sm" fontWeight="bold" minW="2.5rem" textAlign="right">
-                {currentVideoProgress}%
-              </Text>
-            </HStack>
-          </Box>
         </Box>
 
-        {/* Video Player und Video-Liste nebeneinander */}
-        <SimpleGrid columns={{ base: 1, lg: 2 }} gap="6" mt="6">
-
-          {/* Video-Liste rechts */}
-          <Box flex="1">
-            <Card.Root
-              w="full"
-              maxH="600px"
-              overflow="hidden"
-              bg="rgba(5, 150, 105, 0.06)"
-              backdropFilter="blur(12px)"
-              borderWidth="1px"
-              borderColor="rgba(5, 150, 105, 0.25)"
-              shadow="sm"
-            >
-            <Card.Header>
-              <HStack justify="space-between" align="center">
-                <VStack align="flex-start" gap="0">
-                  <Text fontSize="md" fontWeight="semibold" color="gray.800">
-                    Videos in {module.title}
-                  </Text>
-                  <Text fontSize="sm" color="gray.600">
-                    {moduleProgress}% abgeschlossen
-                  </Text>
-                </VStack>
-                <CircularProgressChart
-                  progress={moduleProgress}
-                  size={44}
-                  color="#059669"
-                  strokeWidth={4}
-                />
-              </HStack>
-            </Card.Header>
-            <Card.Body p="0">
-              <Stack gap="0" maxH="320px" overflowY="auto">
-                {module.videos.map((video) => {
-                  const isActive = video.id === currentVideo.id;
-                  const videoProgressData = progress[video.id];
-                  const isCompleted = videoProgressData?.completed || false;
-                  const progressPercent = videoProgressData
-                    ? Math.min(Math.round((videoProgressData.watched_seconds / (video.duration * 60)) * 100), 100)
-                    : 0;
-
-                  return (
-                    <Link key={video.id} href={`/app/free/lerne-die-grundlagen/video/${video.id}`}>
-                      <Box
-                        p="3"
-                        borderBottom="1px solid"
-                        borderColor="rgba(5, 150, 105, 0.12)"
-                        bg={isActive ? "rgba(5, 150, 105, 0.12)" : "transparent"}
-                        _hover={{ bg: isActive ? "rgba(5, 150, 105, 0.12)" : "rgba(5, 150, 105, 0.04)" }}
-                        transition="all 0.2s"
-                      >
-                        <HStack gap="3" align="flex-start">
-                          <Box
-                            w="56px"
-                            h="32px"
-                            borderRadius="sm"
-                            flexShrink="0"
-                            display="flex"
-                            alignItems="center"
-                            justifyContent="center"
-                            bg={isActive ? "rgba(5, 150, 105, 0.2)" : "gray.100"}
-                          >
-                            {isCompleted ? (
-                              <CheckCircle size={16} color="#059669" weight="fill" />
-                            ) : (
-                              <Play size={12} color="#6b7280" />
-                            )}
-                          </Box>
-                          <VStack align="flex-start" gap="1" flex="1" minW="0">
-                            <HStack gap="2" align="center">
-                              <Badge
-                                colorPalette={isActive ? "green" : isCompleted ? "green" : "gray"}
-                                size="sm"
-                                variant="subtle"
-                              >
-                                {video.sort_order}
-                              </Badge>
-                              <Text
-                                fontSize="sm"
-                                fontWeight={isActive ? "semibold" : "medium"}
-                                color={isActive ? "green.800" : "gray.800"}
-                                lineHeight="1.3"
-                                style={{
-                                  display: '-webkit-box',
-                                  WebkitLineClamp: 2,
-                                  WebkitBoxOrient: 'vertical',
-                                  overflow: 'hidden'
-                                }}
-                              >
-                                {video.title}
-                              </Text>
-                            </HStack>
-                            {progressPercent > 0 && (
-                              <Text fontSize="xs" color="green.600" fontWeight="medium">
-                                {progressPercent}%
-                              </Text>
-                            )}
-                          </VStack>
-                        </HStack>
-                      </Box>
-                    </Link>
-                  );
-                })}
-              </Stack>
-            </Card.Body>
-          </Card.Root>
-          </Box>
-        </SimpleGrid>
-
-        {/* Kommentare und Notizen unter dem Video */}
-        {/* Kommentare (Fragen) Bereich */}
+        {/* Kurs-Übersicht: volle Breite, kompakt in einer Reihe pro Video */}
         <Card.Root
-          bg="rgba(5, 150, 105, 0.06)"
-          backdropFilter="blur(12px)"
+          w="full"
+          overflow="hidden"
+          bg="green.50"
           borderWidth="1px"
-          borderColor="rgba(5, 150, 105, 0.25)"
+          borderColor="green.200"
           shadow="sm"
         >
-          <Card.Header>
-            <Heading size="md" color="gray.800">
-              Kommentare
-            </Heading>
+          <Card.Header py="2" px="3">
+            <HStack justify="space-between" align="center" w="full">
+              <Text fontSize="sm" fontWeight="600" color="gray.800">
+                {module.title} · {module.videos.length} Lektionen
+              </Text>
+              <CircularProgressChart progress={moduleProgress} size={88} color="#059669" strokeWidth={5} />
+            </HStack>
           </Card.Header>
-          <Card.Body>
-            <Stack gap="4">
-              {/* Kommentar Formular */}
-              <VStack gap="3" align="stretch">
-                <Textarea
-                  placeholder="Stelle eine Frage oder teile deine Gedanken zu diesem Video..."
-                  value={commentContent}
-                  onChange={(e) => setCommentContent(e.target.value)}
-                  minH="80px"
-                  resize="vertical"
-                />
-                <HStack justify="flex-end">
-                  <Button
-                    size="sm"
-                    colorPalette="green"
-                    onClick={handleSaveComment}
-                    disabled={!commentContent.trim()}
-                  >
-                    Kommentar posten
-                  </Button>
-                </HStack>
-              </VStack>
+          <Card.Body p="0">
+            <Stack gap="0">
+              {module.videos.map((video) => {
+                const isActive = video.id === currentVideo.id;
+                const videoProgressData = progress[video.id];
+                const isCompleted = videoProgressData?.completed || false;
+                const progressPercent = videoProgressData
+                  ? Math.min(Math.round((videoProgressData.watched_seconds / (video.duration * 60)) * 100), 100)
+                  : 0;
 
-              {/* Kommentare Liste */}
-              {loadingComments ? (
-                <HStack justify="center" py="4">
-                  <Spinner size="sm" color="green.500" />
-                  <Text color="gray.600">Lade Kommentare...</Text>
-                </HStack>
-              ) : comments.length > 0 ? (
-                <Stack gap="3">
-                  {comments.map((comment) => (
-                    <Box
-                      key={comment.id}
-                      p="3"
-                      bg="rgba(5, 150, 105, 0.04)"
-                      borderRadius="md"
-                      borderWidth="1px"
-                      borderColor="rgba(5, 150, 105, 0.2)"
+                return (
+                  <Link key={video.id} href={`/app/free/lerne-die-grundlagen/video/${video.id}`}>
+                    <HStack
+                      gap="2"
+                      align="center"
+                      w="full"
+                      px="3"
+                      py="2"
+                      borderBottom="1px solid"
+                      borderColor="green.100"
+                      bg={isActive ? "green.50" : "transparent"}
+                      _hover={{ bg: "green.50" }}
+                      transition="all 0.2s"
                     >
-                      <Text color="gray.800" whiteSpace="pre-wrap">
-                        {comment.content}
+                      <Box
+                        w="36px"
+                        h="22px"
+                        borderRadius="sm"
+                        flexShrink="0"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                        bg={isActive ? "green.200" : "gray.100"}
+                      >
+                        {isCompleted ? (
+                          <CheckCircle size={12} color="#059669" weight="fill" />
+                        ) : (
+                          <Play size={10} color="#6b7280" />
+                        )}
+                      </Box>
+                      <Badge colorPalette={isActive ? "green" : isCompleted ? "green" : "gray"} size="sm" variant="subtle" flexShrink="0">
+                        {video.sort_order}
+                      </Badge>
+                      <Text
+                        fontSize="xs"
+                        fontWeight={isActive ? "600" : "normal"}
+                        color={isActive ? "green.800" : "gray.700"}
+                        flex="1"
+                        minW="0"
+                        overflow="hidden"
+                        textOverflow="ellipsis"
+                        whiteSpace="nowrap"
+                      >
+                        {video.title}
                       </Text>
-                      <Text fontSize="xs" color="gray.500" mt="2">
-                        {new Date(comment.created_at).toLocaleDateString('de-DE')}
-                      </Text>
-                    </Box>
-                  ))}
-                </Stack>
-              ) : (
-                <Text color="gray.500" textAlign="center" py="4">
-                  Noch keine Kommentare vorhanden.
-                </Text>
-              )}
+                      {progressPercent > 0 && (
+                        <Text fontSize="xs" color="green.600" fontWeight="500" flexShrink="0">
+                          {progressPercent}%
+                        </Text>
+                      )}
+                    </HStack>
+                  </Link>
+                );
+              })}
             </Stack>
           </Card.Body>
         </Card.Root>
 
-        {/* Notizen Bereich - aufklappbar */}
+        {/* Kommentare & Notizen: gebündelt, aufklappbar, dezent */}
         <Card.Root
-          bg="rgba(5, 150, 105, 0.06)"
-          backdropFilter="blur(12px)"
+          w="full"
+          bg="gray.50"
           borderWidth="1px"
-          borderColor="rgba(5, 150, 105, 0.25)"
+          borderColor="gray.200"
           shadow="sm"
         >
-          <Card.Header>
-            <Heading size="md" color="gray.800">
-              Notizen
-            </Heading>
-          </Card.Header>
-          <Card.Body>
-            <Accordion.Root collapsible defaultValue={[]}>
-              <Accordion.Item value="notes">
-                <Accordion.ItemTrigger>
-                  Notizen verwalten
+          <Card.Body p="0">
+            <Accordion.Root collapsible multiple defaultValue={[]}>
+              <Accordion.Item value="comments">
+                <Accordion.ItemTrigger
+                  py="2"
+                  px="3"
+                  fontSize="sm"
+                  fontWeight="500"
+                  color="gray.700"
+                  _hover={{ bg: "gray.100" }}
+                >
+                  Kommentare {comments.length > 0 && `(${comments.length})`}
                 </Accordion.ItemTrigger>
                 <Accordion.ItemContent>
-                  <Stack gap="4" pt="4">
-                    {/* Notiz Formular */}
-                    <VStack gap="3" align="stretch">
+                  <Box px="3" pb="3" pt="1">
+                    <VStack gap="2" align="stretch">
                       <Textarea
-                        placeholder="Schreibe eine persönliche Notiz zu diesem Video..."
+                        placeholder="Frage oder Gedanke..."
+                        value={commentContent}
+                        onChange={(e) => setCommentContent(e.target.value)}
+                        size="sm"
+                        minH="64px"
+                        resize="vertical"
+                        bg="white"
+                      />
+                      <HStack justify="flex-end">
+                        <Button size="xs" colorPalette="green" onClick={handleSaveComment} disabled={!commentContent.trim()}>
+                          Posten
+                        </Button>
+                      </HStack>
+                    </VStack>
+                    {loadingComments ? (
+                      <HStack justify="center" py="3">
+                        <Spinner size="sm" color="green.500" />
+                      </HStack>
+                    ) : comments.length > 0 ? (
+                      <Stack gap="2" mt="2">
+                        {comments.map((comment) => (
+                          <Box key={comment.id} p="2" bg="white" borderRadius="md" borderWidth="1px" borderColor="gray.200">
+                            <Text fontSize="xs" color="gray.800" whiteSpace="pre-wrap">
+                              {comment.content}
+                            </Text>
+                            <Text fontSize="2xs" color="gray.400" mt="1">
+                              {new Date(comment.created_at).toLocaleDateString("de-DE")}
+                            </Text>
+                          </Box>
+                        ))}
+                      </Stack>
+                    ) : (
+                      <Text fontSize="xs" color="gray.500" py="2">Noch keine Kommentare.</Text>
+                    )}
+                  </Box>
+                </Accordion.ItemContent>
+              </Accordion.Item>
+              <Accordion.Item value="notes">
+                <Accordion.ItemTrigger
+                  py="2"
+                  px="3"
+                  fontSize="sm"
+                  fontWeight="500"
+                  color="gray.700"
+                  borderTop="1px solid"
+                  borderColor="gray.200"
+                  _hover={{ bg: "gray.100" }}
+                >
+                  Notizen {notes.length > 0 && `(${notes.length})`}
+                </Accordion.ItemTrigger>
+                <Accordion.ItemContent>
+                  <Box px="3" pb="3" pt="1">
+                    <VStack gap="2" align="stretch">
+                      <Textarea
+                        placeholder="Persönliche Notiz..."
                         value={noteContent}
                         onChange={(e) => setNoteContent(e.target.value)}
-                        minH="100px"
+                        size="sm"
+                        minH="64px"
                         resize="vertical"
+                        bg="white"
                       />
-                      <HStack gap="3" justify="space-between">
+                      <HStack gap="2" flexWrap="wrap">
                         <Button
-                          size="sm"
+                          size="xs"
                           variant="outline"
                           colorPalette="green"
                           onClick={handleAddTimestamp}
                           disabled={!currentVideo}
                         >
-                          Aktuelle Zeit übernehmen ({Math.floor(currentTime / 60)}:{(Math.floor(currentTime % 60)).toString().padStart(2, '0')})
+                          Zeit {Math.floor(currentTime / 60)}:{(Math.floor(currentTime % 60)).toString().padStart(2, "0")}
                         </Button>
-                        <Button
-                          size="sm"
-                          colorPalette="green"
-                          onClick={handleSaveNote}
-                          disabled={!noteContent.trim()}
-                        >
-                          Notiz speichern
+                        <Button size="xs" colorPalette="green" onClick={handleSaveNote} disabled={!noteContent.trim()}>
+                          Speichern
                         </Button>
                       </HStack>
                     </VStack>
-
-                    {/* Notizen Liste */}
                     {loadingNotes ? (
-                      <HStack justify="center" py="4">
+                      <HStack justify="center" py="3">
                         <Spinner size="sm" color="green.500" />
-                        <Text color="gray.600">Lade Notizen...</Text>
                       </HStack>
                     ) : notes.length > 0 ? (
-                      <Stack gap="3">
+                      <Stack gap="2" mt="2">
                         {notes.map((note) => (
-                          <Box
-                            key={note.id}
-                            p="3"
-                            bg="rgba(5, 150, 105, 0.04)"
-                            borderRadius="md"
-                            borderWidth="1px"
-                            borderColor="rgba(5, 150, 105, 0.2)"
-                          >
-                            <Text color="gray.800" whiteSpace="pre-wrap">
+                          <Box key={note.id} p="2" bg="white" borderRadius="md" borderWidth="1px" borderColor="gray.200">
+                            <Text fontSize="xs" color="gray.800" whiteSpace="pre-wrap">
                               {note.content}
                             </Text>
-                            <HStack gap="2" mt="2" justify="space-between">
+                            <HStack gap="2" mt="1" justify="space-between">
                               {note.timestamp_seconds && (
-                                <Text fontSize="xs" color="green.700">
-                                  Bei {Math.floor(note.timestamp_seconds / 60)}:{(note.timestamp_seconds % 60).toString().padStart(2, '0')}
+                                <Text fontSize="2xs" color="green.600">
+                                  {Math.floor(note.timestamp_seconds / 60)}:{(note.timestamp_seconds % 60).toString().padStart(2, "0")}
                                 </Text>
                               )}
-                              <Text fontSize="xs" color="gray.500">
-                                {new Date(note.created_at).toLocaleDateString('de-DE')}
+                              <Text fontSize="2xs" color="gray.400">
+                                {new Date(note.created_at).toLocaleDateString("de-DE")}
                               </Text>
                             </HStack>
                           </Box>
                         ))}
                       </Stack>
                     ) : (
-                      <Text color="gray.500" textAlign="center" py="4">
-                        Noch keine Notizen vorhanden.
-                      </Text>
+                      <Text fontSize="xs" color="gray.500" py="2">Noch keine Notizen.</Text>
                     )}
-                  </Stack>
+                  </Box>
                 </Accordion.ItemContent>
               </Accordion.Item>
             </Accordion.Root>

@@ -4,12 +4,16 @@ import type React from "react";
 export interface SectionProps extends BoxProps {
   children?: React.ReactNode;
   header?: boolean;
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
 }
 
 export const Section = ({ header, size = "md", ...props }: SectionProps) => {
   const { ...rootProps } = props;
   const paddingY = {
+    xs: {
+      base: "2",
+      md: "4",
+    },
     sm: {
       base: "2",
       md: "4",
@@ -24,8 +28,12 @@ export const Section = ({ header, size = "md", ...props }: SectionProps) => {
     },
   };
   if (header) {
-    const topPadding = (size: "sm" | "md" | "lg") => {
+    const topPadding = (size: "xs" | "sm" | "md" | "lg") => {
       const conversion = {
+        xs: {
+          base: "12",
+          md: "6",
+        },
         sm: {
           base: "112px",
           md: "120px",

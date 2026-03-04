@@ -26,20 +26,20 @@ export const FunnelNavbar = () => {
       w="100vw"
       maxW="100vw"
       px={{ base: "4", md: "6" }}
-      overflowX="hidden"
+      overflow="visible"
     >
       <Container maxW={{ base: "full", md: "1100px" }} w="full" px="0" mx="auto">
         <Box
           w="full"
           px={{ base: 3, sm: 4, md: 4 }}
           py={{ base: 2.5, sm: 3, md: 3 }}
-          boxShadow="0 2px 12px -2px rgba(0, 0, 0, 0.08), 0 4px 24px -4px rgba(0, 0, 0, 0.06), 0 0 0 0.5px rgba(255, 255, 255, 0.05) inset"
-          background="white"
-          backdropFilter="blur(20px) saturate(400%)"
+          boxShadow="0 4px 12px rgba(0, 0, 0, 0.1), 0 12px 40px rgba(0, 0, 0, 0.12), 0 24px 64px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(255, 255, 255, 0.4) inset"
+          background="rgba(255, 255, 255, 0.2)"
+          backdropFilter="blur(20px) saturate(180%)"
           border="1px solid"
-          borderColor="border.emphasized/50"
+          borderColor="rgba(255, 255, 255, 0.35)"
           borderRadius="l3"
-          overflow="hidden"
+          overflow="visible"
         >
           <HStack
             w="full"
@@ -110,12 +110,12 @@ export const FunnelNavbar = () => {
                 justifyContent="center"
               >
                 <Image
-                  src="/logo.webp"
+                  src="/hero-funnel/logo/logo-pumpitclub.png"
                   alt="PumpItClub Logo"
                   width={200}
                   height={50}
                   style={{
-                    height: "30px",
+                    height: "36px",
                     width: "auto",
                     objectFit: "contain",
                     display: "block",
@@ -125,28 +125,26 @@ export const FunnelNavbar = () => {
             </Center>
 
             {/* Right: Login Button */}
-            <Box flexShrink={0} w={{ base: "60px", sm: "80px", md: "100px" }}>
+            <Box flexShrink={0} w={{ base: "72px", sm: "96px", md: "120px" }}>
               <Link href="/login">
                 <Button
-                  size={{ base: "sm", sm: "md", md: "lg" }}
-                  variant="outline"
-                  colorPalette="gray"
-                  px={{ base: 1.5, sm: 3, md: 4 }}
-                  py={{ base: 1.5, sm: 2, md: 2.5 }}
-                  fontSize={{ base: "xs", sm: "sm", md: "md" }}
+                  size={{ base: "md", sm: "lg", md: "xl" }}
+                  px={{ base: 3, sm: 4, md: 5 }}
+                  py={{ base: 2, sm: 2.5, md: 3 }}
+                  fontSize={{ base: "sm", sm: "md", md: "lg" }}
                   borderRadius="lg"
-                  bg="rgba(255, 255, 255, 0.9)"
-                  backdropFilter="blur(20px) saturate(200%)"
-                  border="1px solid"
-                  borderColor="border.emphasized/50"
-                  boxShadow="0 2px 12px -2px rgba(0, 0, 0, 0.08), 0 4px 24px -4px rgba(0, 0, 0, 0.06)"
-                  transition="all 0.3s ease"
+                  bg="green.500"
+                  color="white"
+                  border="2px solid"
+                  borderColor="green.600"
+                  boxShadow="md"
+                  transition="all 0.2s"
                   w="full"
                   _hover={{
-                    bg: "rgba(255, 255, 255, 0.95)",
-                    transform: "translateY(-2px)",
-                    boxShadow: "0 4px 16px -2px rgba(0, 0, 0, 0.12), 0 8px 32px -4px rgba(0, 0, 0, 0.08)",
+                    bg: "green.600",
+                    transform: "scale(1.05)",
                   }}
+                  _active={{ transform: "scale(0.98)" }}
                   display="flex"
                   alignItems="center"
                   justifyContent={{ base: "center", sm: "flex-end" }}

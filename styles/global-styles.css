@@ -17,13 +17,36 @@
   animation: bounce-down 1.5s ease-in-out infinite;
 }
 
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.btn-pulse-scale {
+  animation: pulse-scale 1.5s ease-in-out infinite;
+}
+
+/* Hero CTA Button – nur Hover-Animation */
+.btn-hero-cta {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+.btn-hero-cta:hover {
+  transform: scale(1.06);
+  box-shadow: 0 12px 28px rgba(34, 197, 94, 0.45);
+}
+.btn-hero-cta:active {
+  transform: scale(0.98);
+}
+
+/* Horizontale Scrollbar in der Problem-Section ausblenden */
+.problem-cards-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 .problem-cards-scroll::-webkit-scrollbar {
-  height: 8px;
+  display: none;
 }
-.problem-cards-scroll::-webkit-scrollbar-thumb {
-  background: #cbd5e0;
-  border-radius: 9999px;
-}
-.problem-cards-scroll::-webkit-scrollbar-track {
-  background: #edf2f7;
+
+.css-7k29l8 {
+  padding-inline: 0 !important;
 }

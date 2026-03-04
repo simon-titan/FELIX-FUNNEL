@@ -246,7 +246,7 @@ export const RecipeDetailCard = ({ recipe }: RecipeDetailCardProps) => {
               {getRecipeIcon()}
             </Box>
             <Box flex={1}>
-              <Heading size="lg" color="green.700" mb={1}>
+              <Heading size="lg" color="green.600" mb={1}>
                 {translateText(recipe.recipe_name)}
               </Heading>
               <Text color="gray.600" fontSize="sm">
@@ -424,7 +424,7 @@ export const RecipeDetailCard = ({ recipe }: RecipeDetailCardProps) => {
                   >
                     <Box 
                       bg="green.100" 
-                      color="green.700" 
+                      color="green.600" 
                       borderRadius="full" 
                       w="28px" 
                       h="28px" 

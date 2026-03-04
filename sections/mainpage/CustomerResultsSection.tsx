@@ -18,6 +18,7 @@ import { Image } from "@/components/ui/image";
 import NextImage from "next/image";
 import { Star, Trophy, TrendUp, Users } from "@phosphor-icons/react";
 import { HeroCard } from "@/components/ui/mainpage/hero-card";
+import { calConfig } from "@/config/cal-config";
 
 
 interface CustomerResultProps {
@@ -446,7 +447,7 @@ export const CustomerResultsSection = ({
                       bottom: '20px',
                       left: '-8px',
                       width: '4px',
-                      background: 'linear-gradient(180deg, transparent 0%, #22c55e 20%, #16a34a 50%, #15803d 80%, transparent 100%)',
+                      background: 'linear-gradient(180deg, transparent 0%, #34d399 20%, #059669 50%, #047857 80%, transparent 100%)',
                       borderRadius: '2px',
                       animation: 'pulseGlow 3s ease-in-out infinite',
                       zIndex: 1
@@ -458,7 +459,7 @@ export const CustomerResultsSection = ({
                       bottom: '20px',
                       right: '-8px',
                       width: '4px',
-                      background: 'linear-gradient(180deg, transparent 0%, #22c55e 20%, #16a34a 50%, #15803d 80%, transparent 100%)',
+                      background: 'linear-gradient(180deg, transparent 0%, #34d399 20%, #059669 50%, #047857 80%, transparent 100%)',
                       borderRadius: '2px',
                       animation: 'pulseGlow 3s ease-in-out infinite 0.5s',
                       zIndex: 1
@@ -480,6 +481,7 @@ export const CustomerResultsSection = ({
                     recommended={false}
                     highlightGreen={true}
                     onSelect={() => setSelectedCard('consultation')}
+                    bookingUrl={calConfig.bookingUrl}
                     h="full"
                   />
                 </Box>

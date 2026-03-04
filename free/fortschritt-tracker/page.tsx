@@ -44,7 +44,7 @@ const LineChart = ({
   data,
   width = 400,
   height = 200,
-  color = "#22c55e",
+  color = "#059669",
   label,
   unit = "",
 }: {
@@ -99,7 +99,7 @@ const LineChart = ({
   return (
     <Box w="full" position="relative" bg="white" borderRadius="lg" p="4" border="1px solid" borderColor="green.100">
       {label && (
-        <Text fontSize="sm" fontWeight="semibold" color="green.800" mb="2">
+        <Text fontSize="sm" fontWeight="semibold" color="green.600" mb="2">
           {label}
         </Text>
       )}
@@ -421,14 +421,14 @@ export default function FortschrittTracker() {
                     Aktuelles Gewicht
                   </Text>
                   <HStack gap="2">
-                    <Text fontSize="3xl" fontWeight="bold" color="green.800">
+                    <Text fontSize="3xl" fontWeight="bold" color="green.600">
                       {weightStats.last.toFixed(1)}
                     </Text>
                     <Text fontSize="lg" color="green.600" fontWeight="medium">
                       kg
                     </Text>
-                    {weightStats.trend === "up" && <TrendUp size={28} color="#22c55e" weight="fill" />}
-                    {weightStats.trend === "down" && <TrendDown size={28} color="#22c55e" weight="fill" />}
+                    {weightStats.trend === "up" && <TrendUp size={28} color="#059669" weight="fill" />}
+                    {weightStats.trend === "down" && <TrendDown size={28} color="#059669" weight="fill" />}
                     {weightStats.trend === "neutral" && <Minus size={28} color="#6b7280" weight="fill" />}
                   </HStack>
                   <HStack gap="1" align="baseline">
@@ -503,7 +503,7 @@ export default function FortschrittTracker() {
               <Card.Root>
                 <Card.Body>
                   <Stack gap="4">
-                    <Heading size="sm" color="green.800">
+                    <Heading size="sm" color="green.600">
                       Neues Gewicht eintragen
                     </Heading>
                     <SimpleGrid columns={{ base: 1, md: 3 }} gap="4">
@@ -558,7 +558,7 @@ export default function FortschrittTracker() {
                 <Card.Root>
                   <Card.Body>
                     <Stack gap="4">
-                      <Heading size="sm" color="green.800">
+                      <Heading size="sm" color="green.600">
                         Gewichtsverlauf
                       </Heading>
                       <LineChart
@@ -567,7 +567,7 @@ export default function FortschrittTracker() {
                           .map((e) => ({ date: e.date, value: e.value }))}
                         width={800}
                         height={300}
-                        color="#22c55e"
+                        color="#059669"
                         label="Gewichtsverlauf"
                         unit=" kg"
                       />
@@ -581,7 +581,7 @@ export default function FortschrittTracker() {
                 <Card.Root>
                   <Card.Body>
                     <Stack gap="2">
-                      <Heading size="sm" color="green.800">
+                      <Heading size="sm" color="green.600">
                         Einträge
                       </Heading>
                       <Stack gap="2">
@@ -605,7 +605,7 @@ export default function FortschrittTracker() {
                                       </Text>
                                     </Box>
                                     <VStack align="flex-start" gap="0">
-                                      <Text fontSize="sm" fontWeight="semibold" color="green.800">
+                                      <Text fontSize="sm" fontWeight="semibold" color="green.600">
                                         {entry.value.toFixed(1)} kg
                                       </Text>
                                       <Text fontSize="xs" color="green.600">
@@ -645,7 +645,7 @@ export default function FortschrittTracker() {
               <Card.Root>
                 <Card.Body>
                   <Stack gap="4">
-                    <Heading size="sm" color="green.800">
+                    <Heading size="sm" color="green.600">
                       Neuen Umfang eintragen
                     </Heading>
                     <SimpleGrid columns={{ base: 1, md: 4 }} gap="4">
@@ -725,7 +725,7 @@ export default function FortschrittTracker() {
                     <Card.Root key={bodyPart}>
                       <Card.Body>
                         <Stack gap="4">
-                          <Heading size="sm" color="green.800">
+                          <Heading size="sm" color="green.600">
                             {bodyPartLabels[bodyPart as CircumferenceEntry["bodyPart"]]}
                           </Heading>
                           <LineChart
@@ -734,7 +734,7 @@ export default function FortschrittTracker() {
                               .map((e) => ({ date: e.date, value: e.value }))}
                             width={400}
                             height={200}
-                            color="#22c55e"
+                            color="#059669"
                             label={bodyPartLabels[bodyPart as CircumferenceEntry["bodyPart"]]}
                             unit=" cm"
                           />
@@ -750,7 +750,7 @@ export default function FortschrittTracker() {
                 <Card.Root>
                   <Card.Body>
                     <Stack gap="2">
-                      <Heading size="sm" color="green.800">
+                      <Heading size="sm" color="green.600">
                         Einträge
                       </Heading>
                       <Stack gap="2">
@@ -762,7 +762,7 @@ export default function FortschrittTracker() {
                                 <HStack justify="space-between">
                                   <HStack gap="4">
                                     <VStack align="flex-start" gap="0">
-                                      <Text fontSize="sm" fontWeight="medium" color="green.800">
+                                      <Text fontSize="sm" fontWeight="medium" color="green.600">
                                         {bodyPartLabels[entry.bodyPart]}: {entry.value.toFixed(1)} cm
                                       </Text>
                                       <Text fontSize="xs" color="green.600">
@@ -802,7 +802,7 @@ export default function FortschrittTracker() {
               <Card.Root>
                 <Card.Body>
                   <Stack gap="4">
-                    <Heading size="sm" color="green.800">
+                    <Heading size="sm" color="green.600">
                       Neues Training eintragen
                     </Heading>
                     <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} gap="4">
@@ -875,7 +875,7 @@ export default function FortschrittTracker() {
                     <Card.Root key={exercise}>
                       <Card.Body>
                         <Stack gap="4">
-                          <Heading size="sm" color="green.800">
+                          <Heading size="sm" color="green.600">
                             {exercise}
                           </Heading>
                           <LineChart
@@ -884,7 +884,7 @@ export default function FortschrittTracker() {
                               .map((e) => ({ date: e.date, value: e.weight || e.value }))}
                             width={400}
                             height={200}
-                            color="#22c55e"
+                            color="#059669"
                             label={exercise}
                             unit=" kg"
                           />
@@ -900,7 +900,7 @@ export default function FortschrittTracker() {
                 <Card.Root>
                   <Card.Body>
                     <Stack gap="2">
-                      <Heading size="sm" color="green.800">
+                      <Heading size="sm" color="green.600">
                         Einträge
                       </Heading>
                       <Stack gap="2">
@@ -912,7 +912,7 @@ export default function FortschrittTracker() {
                                 <HStack justify="space-between">
                                   <HStack gap="4">
                                     <VStack align="flex-start" gap="0">
-                                      <Text fontSize="sm" fontWeight="medium" color="green.800">
+                                      <Text fontSize="sm" fontWeight="medium" color="green.600">
                                         {entry.exercise}
                                       </Text>
                                       <Text fontSize="xs" color="green.600">

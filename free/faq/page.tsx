@@ -322,7 +322,7 @@ export default function FAQ() {
                                     {categoryLabels[question.category]}
                                   </Badge>
                                 </HStack>
-                                <Heading size="md" color="green.800">
+                                <Heading size="md" color="green.600">
                                   {question.question}
                                 </Heading>
                                 <HStack gap="3" fontSize="xs" color="green.600">
@@ -368,7 +368,7 @@ export default function FAQ() {
                                         </HStack>
                                       </Button>
                                     </HStack>
-                                    <Text fontSize="sm" color="green.800">
+                                    <Text fontSize="sm" color="green.600">
                                       {answer.answer}
                                     </Text>
                                   </Stack>
@@ -438,7 +438,7 @@ export default function FAQ() {
               <Card.Root>
                 <Card.Body>
                   <Stack gap="4">
-                    <Heading size="sm" color="green.800">
+                    <Heading size="sm" color="green.600">
                       Neue Frage stellen
                     </Heading>
 

@@ -11,6 +11,7 @@ import {
   type BoxProps,
 } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/components/ui/link";
 import { CheckCircle } from "@phosphor-icons/react";
 
 interface HeroCardProps extends BoxProps {
@@ -22,6 +23,8 @@ interface HeroCardProps extends BoxProps {
   recommended?: boolean;
   highlightGreen?: boolean;
   onSelect?: () => void;
+  /** Wenn gesetzt: Button öffnet diese URL (z. B. Cal.com-Buchung) in neuem Tab */
+  bookingUrl?: string;
 }
 
 export const HeroCard = ({
@@ -33,6 +36,7 @@ export const HeroCard = ({
   recommended = false,
   highlightGreen = false,
   onSelect,
+  bookingUrl,
   ...rest
 }: HeroCardProps) => {
 
@@ -187,10 +191,12 @@ export const HeroCard = ({
           {/* Button am unteren Rand */}
           {buttonText && (
             <Box mt={{ base: "5", md: "6" }} pt={{ base: "4", md: "5" }} borderTop="1px solid" borderColor="border.muted/30" w="full">
-              <Button
-                w="full"
-                size="lg"
-                onClick={onSelect}
+              {bookingUrl ? (
+                <Link href={bookingUrl} target="_blank" rel="noopener noreferrer" _hover={{ textDecoration: "none" }}>
+                  <Button
+                    w="full"
+                    size="lg"
+                    as="span"
                 bg={
                   highlightGreen
                     ? selected
@@ -257,9 +263,85 @@ export const HeroCard = ({
                 _active={{
                   transform: "translateY(0)",
                 }}
-              >
-                {buttonText}
-              </Button>
+                  >
+                    {buttonText}
+                  </Button>
+                </Link>
+              ) : (
+                <Button
+                  w="full"
+                  size="lg"
+                  onClick={onSelect}
+                  bg={
+                    highlightGreen
+                      ? selected
+                        ? "success.solid"
+                        : "success.solid/10"
+                      : selected
+                    ? "primary.solid"
+                    : "bg.panel/60"
+                  }
+                  color={
+                    highlightGreen
+                      ? selected
+                        ? "white"
+                        : "success.solid"
+                      : selected
+                    ? "white"
+                    : "fg"
+                  }
+                  border="1px solid"
+                  borderColor={
+                    highlightGreen
+                      ? selected
+                        ? "success.solid"
+                        : "success.solid/40"
+                      : selected
+                    ? "primary.solid"
+                    : "border.emphasized/50"
+                  }
+                  backdropFilter="blur(16px)"
+                  boxShadow={
+                    highlightGreen
+                      ? selected
+                        ? "0 1px 6px -2px rgba(0, 0, 0, 0.04), 0 2px 12px -4px rgba(0, 0, 0, 0.03), 0 0 0 0.5px rgba(255, 255, 255, 0.08) inset, 0 0 16px -4px rgba(107, 192, 31, 0.2)"
+                        : "0 1px 4px -2px rgba(0, 0, 0, 0.03), 0 0 0 0.5px rgba(255, 255, 255, 0.04) inset, 0 0 8px -4px rgba(107, 192, 31, 0.1)"
+                      : selected
+                    ? "0 1px 6px -2px rgba(0, 0, 0, 0.04), 0 2px 12px -4px rgba(0, 0, 0, 0.03), 0 0 0 0.5px rgba(255, 255, 255, 0.08) inset"
+                    : "0 1px 4px -2px rgba(0, 0, 0, 0.03), 0 0 0 0.5px rgba(255, 255, 255, 0.04) inset"
+                  }
+                  transition="all 0.3s cubic-bezier(0.16, 1, 0.3, 1)"
+                  _hover={{
+                    transform: "translateY(-1px)",
+                    bg: highlightGreen
+                      ? selected
+                        ? "success.solid"
+                        : "success.solid/15"
+                      : selected
+                    ? "primary.solid"
+                    : "bg.panel/80",
+                    borderColor: highlightGreen
+                      ? selected
+                        ? "success.solid"
+                        : "success.solid/60"
+                      : selected
+                    ? "primary.solid"
+                    : "border.emphasized/70",
+                    boxShadow: highlightGreen
+                      ? selected
+                        ? "0 2px 10px -2px rgba(0, 0, 0, 0.06), 0 4px 20px -4px rgba(0, 0, 0, 0.04), 0 0 0 0.5px rgba(255, 255, 255, 0.12) inset, 0 0 20px -4px rgba(107, 192, 31, 0.25)"
+                        : "0 2px 8px -2px rgba(0, 0, 0, 0.05), 0 0 0 0.5px rgba(255, 255, 255, 0.06) inset, 0 0 12px -4px rgba(107, 192, 31, 0.15)"
+                      : selected
+                    ? "0 2px 10px -2px rgba(0, 0, 0, 0.06), 0 4px 20px -4px rgba(0, 0, 0, 0.04), 0 0 0 0.5px rgba(255, 255, 255, 0.12) inset"
+                    : "0 2px 8px -2px rgba(0, 0, 0, 0.05), 0 0 0 0.5px rgba(255, 255, 255, 0.06) inset",
+                  }}
+                  _active={{
+                    transform: "translateY(0)",
+                  }}
+                >
+                  {buttonText}
+                </Button>
+              )}
             </Box>
           )}
         </Card.Body>

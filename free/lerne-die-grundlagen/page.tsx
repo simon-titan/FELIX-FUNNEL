@@ -246,7 +246,7 @@ export default function LerneDieGrundlagen() {
                   <Card.Body>
                     <Stack gap="3">
                       <HStack justify="space-between">
-                        <Heading size="md" color="green.800">
+                        <Heading size="md" color="green.600">
                           {module.title}
                         </Heading>
                         <HStack gap="2">
@@ -309,7 +309,7 @@ export default function LerneDieGrundlagen() {
           >
             Zurück zur Übersicht
           </Button>
-          <Heading size="lg" color="green.800">
+          <Heading size="lg" color="green.600">
             {selectedModule.title.toUpperCase()}
           </Heading>
         </Stack>
@@ -379,11 +379,11 @@ export default function LerneDieGrundlagen() {
                           <HStack gap="2" justify="space-between">
                             <HStack gap="2" flex="1">
                               {isCompleted ? (
-                                <CheckCircle size={20} color="#22c55e" weight="fill" />
+                                <CheckCircle size={20} color="#059669" weight="fill" />
                               ) : isSelected ? (
-                                <Play size={20} color="#22c55e" weight="fill" />
+                                <Play size={20} color="#059669" weight="fill" />
                               ) : (
-                                <VideoCamera size={20} color="#22c55e" />
+                                <VideoCamera size={20} color="#059669" />
                               )}
                               <VStack align="flex-start" gap="0" flex="1">
                                 <Text
@@ -445,7 +445,7 @@ export default function LerneDieGrundlagen() {
 
                 <Tabs.Content value="notes">
                   <Stack gap="4" mt="4">
-                    <Heading size="sm" color="green.800">
+                    <Heading size="sm" color="green.600">
                       Neue Notiz erstellen
                     </Heading>
                     <HStack gap="2">
@@ -501,7 +501,7 @@ export default function LerneDieGrundlagen() {
                                     </Button>
                                   </HStack>
                                 </HStack>
-                                <Text fontSize="sm" color="green.800">
+                                <Text fontSize="sm" color="green.600">
                                   {note.content}
                                 </Text>
                               </Stack>

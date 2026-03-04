@@ -12,91 +12,72 @@ export const metadata = generateMetadata({
 export default function PrivacyPolicy() {
   return (
     <Section>
-      <Prose mx="auto" size="lg" mt="">
+      <Prose
+        mx="auto"
+        size="lg"
+        mt={{ base: "28", md: "32" }}
+        px={{ base: "4", sm: "5", md: "0" }}
+        py={{ base: "6", md: "8" }}
+      >
         <Markdown>
-          {`
-# Privacy Policy
+          {`# Datenschutzerklärung
 
-**Effective Date:** [Insert Date]
+## KUNDENINFORMATION ZUM DATENSCHUTZ
 
-At [Your Company Name], we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you visit our website and use our services. By accessing or using our services, you agree to the terms of this Privacy Policy.
+Sehr geehrte Kundin, sehr geehrter Kunde,
 
-## 1. Information We Collect
+der Schutz Ihrer personenbezogenen Daten ist uns wichtig. Nach der EU-Datenschutz-Grundverordnung (DSGVO) sind wir verpflichtet, Sie darüber zu informieren, zu welchem Zweck unser Unternehmen Daten erhebt, speichert oder weiterleitet. Der Information können Sie auch entnehmen, welche Rechte Sie in puncto Datenschutz haben.
 
-We may collect the following types of information:
+## 1. VERANTWORTLICHKEIT FÜR DIE DATENVERARBEITUNG
 
-### 1.1 Personal Information
-When you register for our services, we may collect personal information that can identify you, such as:
--  Name
--  Email address
--  Phone number
--  Billing address
--  Payment information
+Verantwortlich für die Datenverarbeitung ist die:
 
-### 1.2 Non-Personal Information
-We may also collect non-personal information that does not identify you, including:
--  Browser type
--  Device information
--  IP address
--  Pages visited
--  Time spent on pages
+Pump It Club  
+Schachhaldenweg 15  
+73529 Schwäbisch Gmünd
 
-## 2. How We Use Your Information
+## 2. ZWECK DER DATENVERARBEITUNG
 
-We may use the information we collect for various purposes, including to:
--  Provide, maintain, and improve our services
--  Process your transactions and manage your account
--  Communicate with you about your account or transactions
--  Send you marketing communications and promotional materials
--  Analyze usage and trends to enhance user experience
--  Comply with legal obligations and enforce our terms
+Die Datenverarbeitung erfolgt aufgrund gesetzlicher Vorgaben, um das Vertragsverhältnis zwischen Ihnen und uns und die damit verbundenen Pflichten zu erfüllen.
 
-## 3. Disclosure of Your Information
+Hierzu verarbeiten wir Ihre personenbezogenen Daten, insbesondere Ihre Kontaktdaten. Dazu zählen u.a. Name, Adresse, Telefonnummer.
 
-We may share your information in the following circumstances:
--  **With Service Providers:** We may share your information with third-party vendors who perform services on our behalf, such as payment processing, data analysis, email delivery, hosting services, and customer service.
--  **For Legal Reasons:** We may disclose your information if required to do so by law or in response to valid requests by public authorities (e.g., a court or government agency).
--  **Business Transfers:** If we are involved in a merger, acquisition, or asset sale, your information may be transferred as part of that transaction.
+Die Erhebung von Kontaktdaten ist Voraussetzung für die Erfüllung des Vertrags. Werden die notwendigen Informationen nicht bereitgestellt, kann eine sorgfältige Bearbeitung nicht erfolgen.
 
-## 4. Data Security
+## 3. EMPFÄNGER IHRER DATEN
 
-We implement reasonable security measures to protect your information from unauthorized access, use, or disclosure. However, no method of transmission over the Internet or method of electronic storage is 100% secure. Therefore, we cannot guarantee its absolute security.
+Wir übermitteln Ihre personenbezogenen Daten nur dann an Dritte, wenn dies gesetzlich erlaubt ist oder Sie eingewilligt haben.
 
-## 5. Your Rights
+Empfänger Ihrer personenbezogenen Daten können vor allem verbundene Unternehmen, Versicherungen und Behörden sein.
 
-Depending on your location, you may have the following rights regarding your information:
--  The right to access, correct, or delete your personal information
--  The right to object to or restrict the processing of your personal information
--  The right to data portability
--  The right to withdraw consent at any time where we rely on your consent to process your information
+Die Übermittlung erfolgt überwiegend zum Zwecke der Erfüllung des Vertragsverhältnisses mit Ihnen und zur Informationsbeschaffung, als auch der Abrechnung der bei Ihnen erbrachten Leistungen. Im Einzelfall erfolgt die Übermittlung von Daten an weitere berechtigte Empfänger.
 
-To exercise these rights, please contact us using the contact information provided below.
+## 4. SPEICHERUNG IHRER DATEN
 
-## 6. Third-Party Websites
+Wir bewahren Ihre personenbezogenen Daten nur solange auf, wie dies für die Durchführung des Vertragsverhältnisses erforderlich ist.
 
-Our services may contain links to third-party websites. We do not control and are not responsible for the content or privacy practices of these websites. We encourage you to review the privacy policies of any third-party sites you visit.
+Aufgrund rechtlicher Vorgaben sind wir gegebenenfalls dazu verpflichtet, Ihre Daten mindestens 10 Jahre nach Abschluss des Vertragsverhältnisses aufzubewahren.
 
-## 7. Children’s Privacy
+## 5. IHRE RECHTE
 
-Our services are not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have collected personal information from a child under 13, we will take steps to delete such information.
+Sie haben das Recht, über die Sie betreffenden personenbezogenen Daten Auskunft zu erhalten. Auch können Sie die Berichtigung unrichtiger Daten verlangen.
 
-## 8. Changes to This Privacy Policy
+Darüber hinaus steht Ihnen unter bestimmten Voraussetzungen das Recht auf Löschung von Daten, das Recht auf Einschränkung der Datenverarbeitung sowie das Recht auf Datenübertragbarkeit zu.
 
-We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on our website with a new effective date. Your continued use of our services after any changes constitutes your acceptance of the updated Privacy Policy.
+Die Verarbeitung Ihrer Daten erfolgt auf Basis von gesetzlichen Regelungen. Nur in Ausnahmefällen benötigen wir Ihr Einverständnis. In diesen Fällen haben Sie das Recht, die Einwilligung für die zukünftige Verarbeitung zu widerrufen.
 
-## 9. Contact Us
+Sie haben ferner das Recht, sich bei der zuständigen Aufsichtsbehörde für den Datenschutz zu beschweren, wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer personenbezogenen Daten nicht rechtmäßig erfolgt.
 
-If you have any questions about this Privacy Policy or our privacy practices, please contact us at:
+Die Anschrift der für uns zuständigen Aufsichtsbehörde lautet:
 
-[Your Company Name]  
-[Your Address]  
-[Your Email Address]  
-[Your Phone Number]  
+Landesbeauftragter für Datenschutz und Informationsfreiheit Baden-Württemberg  
+Königstraße 10a  
+70173 Stuttgart
 
----
+## 6. RECHTLICHE GRUNDLAGEN
 
-**Last Updated:** [Insert Date]
-          `}
+Rechtsgrundlage für die Verarbeitung Ihrer Daten ist Artikel 9 Absatz 2 lit. h) DSGVO in Verbindung mit Paragraf 22 Absatz 1 Nr. 1 lit. b) Bundesdatenschutzgesetz. Sollten Sie Fragen haben, können Sie sich gern an uns wenden.
+`}
         </Markdown>
       </Prose>
     </Section>

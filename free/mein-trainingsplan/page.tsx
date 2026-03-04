@@ -395,7 +395,7 @@ END:VCALENDAR`;
                 >
                   ←
                 </Button>
-                <Heading size="md" color="green.800">
+                <Heading size="md" color="green.600">
                   {monthYear}
                 </Heading>
                 <Button
@@ -504,7 +504,7 @@ END:VCALENDAR`;
                       <Card.Body>
                         <Stack gap="3">
                           <HStack justify="space-between">
-                            <Heading size="sm" color="green.800">
+                            <Heading size="sm" color="green.600">
                               {exercise.name}
                             </Heading>
                             <HStack gap="2">
@@ -557,7 +557,7 @@ END:VCALENDAR`;
                   <Card.Root borderColor="green.300" borderWidth="2px">
                     <Card.Body>
                       <Stack gap="4">
-                        <Heading size="sm" color="green.800">
+                        <Heading size="sm" color="green.600">
                           {editingExercise ? "Übung bearbeiten" : "Neue Übung hinzufügen"}
                         </Heading>
 

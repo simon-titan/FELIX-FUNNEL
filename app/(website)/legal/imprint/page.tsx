@@ -11,40 +11,35 @@ export const metadata = generateMetadata({
 export default function Imprint() {
   return (
     <Section>
-      <Prose mx="auto" size="lg" mt="28">
+      <Prose
+        mx="auto"
+        size="lg"
+        mt={{ base: "28", md: "32" }}
+        px={{ base: "4", sm: "5", md: "0" }}
+        py={{ base: "6", md: "8" }}
+      >
         <Markdown>
           {`
 # Impressum
 
 **Angaben gemäß § 5 TMG**
 
-## Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:
+## Anbieter / Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:
 
-[Firmenname]  
-[Straße und Hausnummer]  
-[PLZ Ort]  
+Pump It Club  
+Schachhaldenweg 15  
+73529 Schwäbisch Gmünd  
 Deutschland
 
-**Kontakt:**
-Telefon: [Telefonnummer]  
-E-Mail: [E-Mail-Adresse]  
-Website: [Website-URL]
+**Inhaber / Founder:** Felix Mangold
 
-## Registereintrag:
+**Kontaktaufnahme:**  
+E-Mail: support@pump-it-club.com
 
-Registergericht: [Amtsgericht]  
-Registernummer: [HRB-Nummer]
+## Umsatzsteuer-ID
 
-## Umsatzsteuer-ID:
-
-Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:  
-[USt-IdNr.]
-
-## Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:
-
-[Name des Verantwortlichen]  
-[Adresse]  
-[PLZ Ort]
+Umsatzsteuer-Identifikationsnummer gem. § 27 a Umsatzsteuergesetz:  
+DE 356 561 394
 
 ## Haftungsausschluss:
 
@@ -62,7 +57,7 @@ Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unt
 
 ---
 
-**Stand:** [Datum]
+**Stand:** März 2025
           `}
         </Markdown>
       </Prose>

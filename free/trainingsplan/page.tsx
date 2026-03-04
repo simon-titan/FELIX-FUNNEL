@@ -27,6 +27,8 @@ import {
   DialogCloseTrigger,
 } from "@/components/ui/dialog";
 import { Section } from "@/components/layout/section";
+import { Link } from "@/components/ui/link";
+import { calConfig } from "@/config/cal-config";
 import { CheckCircle, Plus, Sparkle, ArrowRight, ArrowLeft, X, Trash } from "@phosphor-icons/react";
 import { trainingPlans, type TrainingPlan } from "./data";
 
@@ -239,7 +241,7 @@ export default function Trainingsplan() {
           <Card.Body>
             <Stack gap="4" direction={{ base: "column", md: "row" }} align={{ base: "stretch", md: "center" }}>
               <Stack gap="2" flex="1">
-                <Heading size="md" color="green.800">
+                <Heading size="md" color="green.600">
                   Finde deinen perfekten Plan
                 </Heading>
                 <Text color="green.700">
@@ -258,13 +260,16 @@ export default function Trainingsplan() {
                     <Text>Plan finden</Text>
                   </HStack>
                 </Button>
-                <Button
-                  colorPalette="green"
-                  variant="outline"
-                  size="lg"
-                >
-                  1:1 Betreuung buchen
-                </Button>
+                <Link href={calConfig.bookingUrl} target="_blank" rel="noopener noreferrer" _hover={{ textDecoration: "none" }}>
+                  <Button
+                    colorPalette="green"
+                    variant="outline"
+                    size="lg"
+                    as="span"
+                  >
+                    1:1 Betreuung buchen
+                  </Button>
+                </Link>
               </Stack>
             </Stack>
           </Card.Body>
@@ -316,7 +321,7 @@ export default function Trainingsplan() {
                     </Stack>
 
                     <Stack gap="3">
-                      <Text fontSize="sm" fontWeight="medium" color="green.800">
+                      <Text fontSize="sm" fontWeight="medium" color="green.600">
                         Übungen:
                       </Text>
                       <List.Root variant="plain" gap="2">
@@ -375,7 +380,7 @@ export default function Trainingsplan() {
               {recommendedPlan ? (
                 <Stack gap="6">
                   <Box textAlign="center" py="4">
-                    <Text fontSize="lg" fontWeight="medium" color="green.800" mb="2">
+                    <Text fontSize="lg" fontWeight="medium" color="green.600" mb="2">
                       Basierend auf deinen Antworten empfehlen wir dir:
                     </Text>
                     <Heading size="xl" color="green.600">
@@ -400,7 +405,7 @@ export default function Trainingsplan() {
                         </Stack>
 
                         <Stack gap="3">
-                          <Text fontSize="sm" fontWeight="medium" color="green.800">
+                          <Text fontSize="sm" fontWeight="medium" color="green.600">
                             Übungen:
                           </Text>
                           <List.Root variant="plain" gap="2">
@@ -441,7 +446,7 @@ export default function Trainingsplan() {
                   </Stack>
 
                   <Stack gap="4">
-                    <Heading size="md" color="green.800">
+                    <Heading size="md" color="green.600">
                       {currentQuestion.question}
                     </Heading>
 

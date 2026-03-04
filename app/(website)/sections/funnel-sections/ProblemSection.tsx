@@ -6,31 +6,47 @@ import { Section } from "@/components/layout/section";
 export function ProblemSection() {
   const problemCards = [
     {
-      imageSrc: "/hero-funnel/problems/erschoepft.png",
-      title: "Chronische Erschöpfung",
-      subheading: "Du gibst 100% – aber dein Körper streikt",
-      text: "Du startest müde in den Tag und kämpfst dich durch, obwohl du eigentlich Vollgas geben willst. Kaffee ist dein bester Freund – aber keine Lösung.",
+      imageSrc: "/hero-funnel/problems/schmerzen.png",
+      title: "Rückenschmerzen & Verspannungen",
+      subheading: "Die Folge von stundenlangem Sitzen",
+      text: "Ob im Büro oder im Homeoffice, als High Performer verbringst du oft 10+ Stunden am Tag im Sitzen. Die Muskulatur verkürzt, die Bandscheiben werden einseitig belastet. Irgendwann wird aus dem gelegentlichen Ziehen ein chronischer Schmerz, der dich im Job und im Privatleben ausbremst.",
     },
-    
+    {
+      imageSrc: "/hero-funnel/problems/erschoepft.png",
+      title: "Energiemangel & Antriebslosigkeit",
+      subheading: "Wenn dir ständig die Kraft fürs Wesentliche fehlt",
+      text: "Du startest mit drei Kaffees in den Tag, aber schon nachmittags fällst du ins Tief. Deine Ernährung besteht aus schnellen Snacks, das Training bleibt auf der Strecke. Die Folge: Deine Energie reicht gerade noch für die Arbeit, für Familie, Hobbys oder dich selbst bleibt nichts übrig.",
+    },
+    {
+      imageSrc: "/hero-funnel/problems/stress.png",
+      title: "Stress & Schlafstörungen",
+      subheading: "Dein Kopf schaltet nie ab",
+      text: "Hoher Verantwortungsdruck, ständige Erreichbarkeit und Deadlines lassen dich auch nach Feierabend nicht los. Die Gedanken kreisen, der Schlaf wird zur Mangelware. Ohne Regeneration leidet nicht nur deine Leistungsfähigkeit, sondern auch deine Gesundheit, langfristig droht der Burnout.",
+    },
     {
       imageSrc: "/hero-funnel/problems/dick.png",
-      title: "Unzufrieden mit deinem Körper",
-      subheading: "Du weißt, da ist mehr drin",
-      text: "Im Spiegel siehst du nicht das, was du dir vorstellst. Du hast das Potenzial – aber kein System, das dich dorthin bringt.",
+      title: "Gewichtszunahme & Stoffwechselträgheit",
+      subheading: "Wenn die Kilos trotz Stress nicht purzeln",
+      text: "Du hast wenig Zeit für frische Mahlzeiten, isst oft unterwegs oder im Meeting. Gleichzeitig signalisiert der Körper durch Cortisolausschüttung „Fettspeichern“. Die Hose spannt, die Waage geht nach oben, und du fühlst dich in deiner Haut nicht mehr wohl.",
     },
     {
-      imageSrc: "/hero-funnel/problems/schmerzen.png",
-      title: "Mentales Chaos",
-      subheading: "Zu viele Baustellen, zu wenig Klarheit",
-      text: "Im Kopf läuft alles gleichzeitig. Entscheidungen kosten dich doppelt so viel Kraft wie nötig – weil dein Geist genauso überlastet ist wie dein Terminkalender.",
+      imageSrc: "/hero-funnel/problems/brain.png",
+      title: "Konzentrationsprobleme & Brain Fog",
+      subheading: "Wenn der Kopf nicht mehr klar denkt",
+      text: "Zu wenig Bewegung, unregelmäßige Mahlzeiten und Dauerstress lassen deine geistige Leistungskurve sinken. Du bist vergesslicher, brauchst länger für Entscheidungen und verlierst den Fokus. Dabei brauchst du gerade als Führungskraft einen klaren Kopf, jeden Tag.",
     },
-    
+    {
+      imageSrc: "/hero-funnel/problems/time.png",
+      title: "Zeitmangel & fehlende Sportroutine",
+      subheading: "Zwischen Meeting und Familie bleibt kein Platz für dich",
+      text: "Du weißt, wie wichtig Sport wäre, aber zwischen 60 Stunden Woche und Familienaufgaben findest du einfach keine Lücke. Selbst wenn du dir vornimmst, abends zu trainieren, siegt am Ende die Erschöpfung. Die Folge: Die Fitness rutscht immer weiter nach hinten, und mit ihr deine Gesundheit.",
+    },
   ];
 
   return (
-    <Section pt={12} pb={8} style={{ paddingInline: "0 !important" }} id="problem-section">
-      <VStack gap={5} textAlign="center" mx="auto">
-        <VStack gap={2}>
+    <Section pt={12} pb={0}  id="problem-section" px="0" maxW="100vw" overflowX="hidden" >
+      <VStack gap={5} textAlign="center" mx="auto" w="full">
+        <VStack gap={2} px={{ base: 4, md: 6 }}>
           <Text fontSize="xs" fontWeight="bold" letterSpacing="wider" color="red.500" textTransform="uppercase">
             Das Problem
           </Text>
@@ -41,15 +57,14 @@ export function ProblemSection() {
             Du bist nicht zu schwach – du hast einfach das falsche System.
           </Text>
         </VStack>
-        {/* Horizontal scrollbare Cards – rechts bis Viewport, Cards werden abgeschnitten */}
+        {/* Horizontal scrollbare Cards – bündig bis Viewport-Rand, Scrollbar ausgeblendet */}
         <Box
-          width="100vw"
+          w="100vw"
           maxW="100vw"
-          marginLeft="calc(50% - 50vw)"
           overflowX="auto"
           overflowY="hidden"
           pb={3}
-          pr={0}
+          paddingInline={0}
           className="problem-cards-scroll"
         >
           <Flex gap={4} width="max-content" minW="min-content" pl={{ base: 4, md: 6 }} pr={0}>
@@ -71,8 +86,17 @@ export function ProblemSection() {
                   transition: "all 0.2s ease-in-out",
                 }}
               >
-                <Box position="relative" height="180px" width="full">
+                <Box position="relative" height="180px" width="full" overflow="hidden">
                   <Image src={card.imageSrc} alt={card.title} objectFit="cover" width="full" height="full" />
+                  {/* Transparenter Verlauf: oben durchsichtig, unten abgedunkelt (Hex) */}
+                  <Box
+                    position="absolute"
+                    inset="0"
+                    style={{
+                      background: "linear-gradient(to bottom, #00000000 0%, #0000008C 100%)",
+                    }}
+                    pointerEvents="none"
+                  />
                   <Box
                     position="absolute"
                     bottom="0"

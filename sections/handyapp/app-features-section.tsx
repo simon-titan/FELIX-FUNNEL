@@ -75,7 +75,7 @@ const FeatureCard = ({ icon, title, description, highlight = false }: FeatureCar
           position="absolute"
           top="-12px"
           right="20px"
-          bg="linear-gradient(135deg, #22c55e 0%, #16a34a 100%)"
+          bg="linear-gradient(135deg, #34d399 0%, #059669 100%)"
           color="white"
           px={3}
           py={1}
@@ -367,7 +367,7 @@ export const AppFeaturesSection = () => {
                       fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
                       fontWeight="800"
                       css={{
-                        background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%)',
+                        background: 'linear-gradient(135deg, #34d399 0%, #059669 50%, #047857 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',

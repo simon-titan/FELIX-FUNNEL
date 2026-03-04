@@ -30,11 +30,20 @@ import {
 
 } from "@phosphor-icons/react/dist/ssr";
 import { Hero1 } from "@/app/(website)/sections/funnel-heroes/Hero1";
-import { LeadFormSection } from "@/app/(website)/sections/funnel-sections/LeadFormSection";
 import { ProblemSection } from "@/app/(website)/sections/funnel-sections/ProblemSection";
 import { SolutionSection } from "@/app/(website)/sections/funnel-sections/SolutionSection";
 import { CustomerReviewSection } from "@/app/(website)/sections/funnel-sections/CustomerReviewSection";
 import { AlternatingCustomerReviewsSection } from "@/app/(website)/sections/funnel-sections/AlternatingCustomerReviewsSection";
+import { getVideoUrl } from "@/app/app/free/lerne-die-grundlagen/data";
+
+const clientVideoKeys = [
+  "CLIENT/Emre.mp4",
+  "CLIENT/Kaan.mp4",
+  "CLIENT/Markus.mp4",
+  "CLIENT/Sumit.mp4",
+];
+const clientVideoSrcs = clientVideoKeys.map((key) => getVideoUrl(key));
+
 export const metadata = generateMetadata({
   title: "Home",
   description:
@@ -46,10 +55,9 @@ export default async function Page() {
     <>
      
       <Hero1 />
-      <LeadFormSection />
       <ProblemSection />
       <SolutionSection />
-      <CustomerReviewSection />
+      <CustomerReviewSection clientVideoSrcs={clientVideoSrcs} />
       <MeetTheFounderSection />
       <ProcessSection />
       <AppDownloadSection />

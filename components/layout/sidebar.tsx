@@ -23,7 +23,7 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer";
 import { Link } from "@/components/ui/link";
-import { VideoCamera } from "@phosphor-icons/react";
+import { VideoCamera, List } from "@phosphor-icons/react";
 
 const navigationItems = [
   { href: "/app/free/trainingsplaene", label: "Trainingspläne" },
@@ -77,7 +77,7 @@ const SidebarContent = () => {
       p="4"
     >
       <Stack gap="2" w="full">
-        {/* Dashboard - immer an erster Position */}
+        {/* Übersicht (Startseite) - immer an erster Position */}
         <Link href="/app/free/dashboard" w="full">
           <Button
             w="full"
@@ -92,7 +92,7 @@ const SidebarContent = () => {
             }}
             transition="all 0.2s"
           >
-            Dashboard
+            Übersicht
           </Button>
         </Link>
 
@@ -132,12 +132,12 @@ export const Sidebar = () => {
 
   if (isMobile) {
     return (
-      <DrawerRoot>
+      <DrawerRoot placement="end">
         <DrawerTrigger asChild>
           <Button
             position="fixed"
-            top="20"
-            left="4"
+            top="4"
+            right="4"
             zIndex="docked"
             colorPalette="green"
             variant="solid"

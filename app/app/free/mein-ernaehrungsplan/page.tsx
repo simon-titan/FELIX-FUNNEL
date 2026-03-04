@@ -362,7 +362,7 @@ export default function MeinErnaehrungsplan() {
                 >
                   ←
                 </Button>
-                <Heading size="md" color="green.800">
+                <Heading size="md" color="green.600">
                   {monthYear}
                 </Heading>
                 <Button
@@ -467,7 +467,7 @@ export default function MeinErnaehrungsplan() {
                     <Card.Root borderColor="green.200">
                       <Card.Body>
                         <Stack gap="2">
-                          <Heading size="sm" color="green.800">
+                          <Heading size="sm" color="green.600">
                             Gericht-Vorschlag
                           </Heading>
                           <Text color="green.700">{selectedDay.mealSuggestion}</Text>
@@ -533,7 +533,7 @@ export default function MeinErnaehrungsplan() {
                       <Card.Body>
                         <Stack gap="3">
                           <HStack justify="space-between">
-                            <Heading size="sm" color="green.800">
+                            <Heading size="sm" color="green.600">
                               {food.name}
                             </Heading>
                             <Button
@@ -571,7 +571,7 @@ export default function MeinErnaehrungsplan() {
                   <Card.Root borderColor="green.300" borderWidth="2px">
                     <Card.Body>
                       <Stack gap="4">
-                        <Heading size="sm" color="green.800">
+                        <Heading size="sm" color="green.600">
                           Lebensmittel hinzufügen
                         </Heading>
 
@@ -607,7 +607,7 @@ export default function MeinErnaehrungsplan() {
                                 _hover={{ bg: "green.50", borderColor: "green.400" }}
                                 onClick={() => handleSelectFood(food)}
                               >
-                                <Text fontWeight="medium" color="green.800">
+                                <Text fontWeight="medium" color="green.600">
                                   {food.food_name}
                                 </Text>
                                 {food.brand_name && (
@@ -630,7 +630,7 @@ export default function MeinErnaehrungsplan() {
                               border="1px solid"
                               borderColor="green.300"
                             >
-                              <Text fontWeight="medium" color="green.800" mb="2">
+                              <Text fontWeight="medium" color="green.600" mb="2">
                                 {selectedFood.food_name}
                               </Text>
                               <Text fontSize="sm" color="green.700" mb="3">

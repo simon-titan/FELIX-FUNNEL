@@ -99,7 +99,7 @@ const MacroPieChart = ({
     return { path, color };
   };
 
-  const proteinPath = getPath(proteinPercent, "#22c55e");
+  const proteinPath = getPath(proteinPercent, "#059669");
   const carbsPath = getPath(carbsPercent, "#3b82f6");
   const fatsPath = getPath(fatsPercent, "#f59e0b");
 
@@ -117,7 +117,7 @@ const MacroPieChart = ({
           textAnchor="middle"
           fontSize="14"
           fontWeight="bold"
-          fill="#22c55e"
+          fill="#059669"
         >
           {Math.round(total)}g
         </text>
@@ -306,10 +306,10 @@ export default function Dashboard() {
                         kg
                       </Text>
                       {weightStats.trend === "up" && (
-                        <TrendUp size={24} color="#22c55e" weight="fill" />
+                        <TrendUp size={24} color="#059669" weight="fill" />
                       )}
                       {weightStats.trend === "down" && (
-                        <TrendDown size={24} color="#22c55e" weight="fill" />
+                        <TrendDown size={24} color="#059669" weight="fill" />
                       )}
                     </HStack>
                     <HStack gap="1" align="baseline">
@@ -453,7 +453,7 @@ export default function Dashboard() {
                     <VStack gap="2" w="full" align="stretch">
                       <HStack justify="space-between">
                         <HStack gap="2">
-                          <Box w="3" h="3" bg="#22c55e" borderRadius="sm" />
+                          <Box w="3" h="3" bg="#059669" borderRadius="sm" />
                           <Text fontSize="sm" color="purple.700">
                             Protein
                           </Text>

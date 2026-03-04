@@ -12,59 +12,65 @@ export const metadata = generateMetadata({
 export default function CookiePolicy() {
   return (
     <Section>
-      <Prose mx="auto" size="lg" mt="28">
+      <Prose
+        mx="auto"
+        size="lg"
+        mt={{ base: "28", md: "32" }}
+        px={{ base: "4", sm: "5", md: "0" }}
+        py={{ base: "6", md: "8" }}
+      >
         <Markdown>
           {`
-# Cookie Policy
+# Cookie-Richtlinie
 
-**Effective Date:** [Insert Date]
+**Stand:** [Datum einfügen]
 
-At [Your Company Name], we use cookies and similar tracking technologies to enhance your experience on our website and services. This Cookie Policy explains what cookies are, how we use them, how third-parties we may partner with may use cookies on the service, your choices regarding cookies, and further information about cookies.
+PumpItClub verwendet Cookies und ähnliche Technologien, um dein Erlebnis auf unserer Website und in unseren Diensten zu verbessern. Diese Cookie-Richtlinie erklärt, was Cookies sind, wie wir sie verwenden, wie Drittanbieter Cookies auf dem Dienst nutzen können, welche Wahlmöglichkeiten du hast und weitere Informationen zu Cookies.
 
-## 1. What Are Cookies?
+## 1. Was sind Cookies?
 
-Cookies are small text files that are used to store small pieces of information. They are stored on your device when the website is loaded on your browser. These cookies help us make the website function properly, make it more secure, provide better user experience, and understand how the website performs and to analyze what works and where it needs improvement.
+Cookies sind kleine Textdateien, in denen kleine Informationsmengen gespeichert werden. Sie werden auf deinem Gerät gespeichert, wenn die Website in deinem Browser geladen wird. Diese Cookies helfen uns dabei, die Website ordnungsgemäß zu betreiben, sie sicherer zu machen, ein besseres Nutzererlebnis zu bieten und zu verstehen, wie die Website funktioniert und wo Verbesserungen nötig sind.
 
-## 2. How [Your Company Name] Uses Cookies
+## 2. Wie PumpItClub Cookies verwendet
 
-When you use and access the Service, we may place a number of cookies files in your web browser. We use cookies for the following purposes:
+Wenn du den Dienst nutzt, können wir eine Reihe von Cookie-Dateien in deinem Browser speichern. Wir verwenden Cookies für folgende Zwecke:
 
--  **Essential Cookies:** We use cookies to remember information that changes the way the Service behaves or looks, such as a user's language preference on the Service.
--  **Account-Related Cookies:** We use cookies to manage the signup process and general administration. These cookies will usually be deleted when you log out; however, in some cases, they may remain afterward to remember your site preferences when logged out.
--  **Analytics Cookies:** We use cookies to help us analyze how our visitors use the Service and to monitor website performance. This helps us provide a high-quality experience by customizing our offering and quickly identifying and fixing any issues that arise.
--  **Advertising Cookies:** We may use cookies to serve you with advertisements that are relevant to you and your interests. 
+- **Notwendige Cookies:** Wir verwenden Cookies, um Informationen zu speichern, die das Verhalten oder Erscheinungsbild des Dienstes beeinflussen, z. B. die Sprachauswahl.
+- **Kontobezogene Cookies:** Wir verwenden Cookies für den Registrierungsprozess und die allgemeine Verwaltung. Diese Cookies werden in der Regel beim Abmelden gelöscht; in einigen Fällen können sie danach bestehen bleiben, um deine Seiteneinstellungen zu speichern.
+- **Analyse-Cookies:** Wir verwenden Cookies, um zu analysieren, wie Besucher den Dienst nutzen und die Leistung der Website zu überwachen. So können wir das Angebot anpassen und Probleme schnell erkennen und beheben.
+- **Werbung-Cookies:** Wir können Cookies verwenden, um dir relevante Werbung anzuzeigen.
 
-## 3. Third-Party Cookies
+## 3. Cookies von Drittanbietern
 
-In addition to our own cookies, we may also use various third-party cookies to report usage statistics of the Service and deliver advertisements on and through the Service. These third-party cookies are governed by the respective privacy policies of these third parties.
+Zusätzlich zu unseren eigenen Cookies können wir Cookies von Drittanbietern verwenden, um Nutzungsstatistiken zu erfassen und Werbung auf und über den Dienst auszuliefern. Diese Cookies unterliegen den jeweiligen Datenschutzrichtlinien der Drittanbieter.
 
-## 4. Your Choices Regarding Cookies
+## 4. Deine Wahlmöglichkeiten
 
-If you prefer to avoid the use of cookies on the website, you must first disable the use of cookies in your browser and then delete the cookies saved in your browser associated with this website. You may use this option for preventing the use of cookies at any time.
+Wenn du Cookies auf der Website vermeiden möchtest, musst du die Verwendung von Cookies in deinem Browser deaktivieren und die mit dieser Website verbundenen Cookies löschen. Du kannst diese Option jederzeit nutzen.
 
--  **Browser Settings:** Most web browsers allow you to control cookies through their settings preferences. To find out more about cookies, including how to see what cookies have been set, visit [www.allaboutcookies.org](http://www.allaboutcookies.org/) or [www.youronlinechoices.eu](http://www.youronlinechoices.eu/).
+- **Browser-Einstellungen:** Die meisten Browser erlauben die Steuerung von Cookies in den Einstellungen. Weitere Informationen zu Cookies findest du unter [www.allaboutcookies.org](http://www.allaboutcookies.org/) oder [www.youronlinechoices.eu](http://www.youronlinechoices.eu/).
 
--  **Opting Out:** You can opt out of targeted advertising by visiting the following links:
+- **Widerspruch:** Du kannst gezielter Werbung widersprechen, indem du folgende Seiten besuchst:
   - [Network Advertising Initiative](http://www.networkadvertising.org/)
   - [Digital Advertising Alliance](http://www.aboutads.info/)
   - [Your Online Choices](http://www.youronlinechoices.eu/)
 
-## 5. Changes to This Cookie Policy
+## 5. Änderungen dieser Cookie-Richtlinie
 
-We may update our Cookie Policy from time to time. We will notify you of any changes by posting the new Cookie Policy on this page. You are advised to review this Cookie Policy periodically for any changes. Changes to this Cookie Policy are effective when they are posted on this page.
+Wir können diese Cookie-Richtlinie von Zeit zu Zeit aktualisieren. Über Änderungen informieren wir, indem wir die neue Fassung auf dieser Seite veröffentlichen. Wir empfehlen, diese Cookie-Richtlinie regelmäßig zu prüfen. Änderungen gelten mit der Veröffentlichung auf dieser Seite.
 
-## 6. Contact Us
+## 6. Kontakt
 
-If you have any questions about this Cookie Policy, please contact us at:
+Bei Fragen zu dieser Cookie-Richtlinie erreichst du uns unter:
 
-[Your Company Name]  
-[Your Address]  
-[Your Email Address]  
-[Your Phone Number]  
+PumpItClub  
+[Adresse]  
+[E-Mail-Adresse]  
+[Telefonnummer]  
 
 ---
 
-**Last Updated:** [Insert Date]
+**Zuletzt aktualisiert:** [Datum einfügen]
           `}
         </Markdown>
       </Prose>

@@ -25,8 +25,6 @@ const FunnelCopyright = () => {
 export const FunnelFooter = () => {
   const legalLinks = [
     { href: "/legal/privacy-policy", label: "Datenschutzerklärung" },
-    { href: "/legal/terms-and-conditions", label: "AGB" },
-    { href: "/legal/cookie-policy", label: "Cookie-Richtlinie" },
     { href: "/legal/imprint", label: "Impressum" },
   ];
 
@@ -60,26 +58,7 @@ export const FunnelFooter = () => {
             gap={{ base: 3, md: 4 }}
           >
             {/* Logo */}
-            <Box>
-              <Link href="/Funnel" display="inline-block">
-                <Box
-                  height="24px"
-                  width="100px"
-                  position="relative"
-                >
-                  <NextImage
-                    src="/logo.webp"
-                    alt={`${projectConfig.general.name} Logo`}
-                    fill
-                    sizes="100px"
-                    style={{
-                      objectFit: "contain",
-                      objectPosition: "left center",
-                    }}
-                  />
-                </Box>
-              </Link>
-            </Box>
+            
 
             {/* Social Links */}
             <HStack gap={3}>

@@ -4,6 +4,7 @@ import { Box, AspectRatio, Slider as ChakraSlider } from "@chakra-ui/react";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { Play, Pause, SpeakerHigh, SpeakerSlash, ArrowsOut } from "@phosphor-icons/react";
 import { PopoverRoot, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 
 interface BucketVideoPlayerProps {
   /** Vollständige URL zum MP4 (z. B. Hetzner Object Storage) */
@@ -163,7 +164,7 @@ export const BucketVideoPlayer = ({
         w="full"
         h="full"
         position="relative"
-        sx={{
+        css={{
           "&:fullscreen": {
             width: "100vw",
             height: "100vh",
@@ -210,9 +211,10 @@ export const BucketVideoPlayer = ({
             gap="2"
             onClick={(e) => e.stopPropagation()}
           >
-            <Box
-              as="button"
+            <Button
               type="button"
+              variant="ghost"
+              size="sm"
               onClick={togglePlay}
               color="white"
               p="0.5"
@@ -221,7 +223,7 @@ export const BucketVideoPlayer = ({
               aria-label={playing ? "Pause" : "Play"}
             >
               {playing ? <Pause size={18} weight="fill" /> : <Play size={18} weight="fill" />}
-            </Box>
+            </Button>
             {/* Grüne Timeline – klickbar zum Suchen */}
             <Box
               flex="1"
@@ -248,9 +250,10 @@ export const BucketVideoPlayer = ({
             {/* Volume – Klick öffnet dezenten Slider direkt über dem Icon */}
             <PopoverRoot positioning={{ placement: "top", gutter: 4 }}>
               <PopoverTrigger asChild>
-                <Box
-                  as="button"
+                <Button
                   type="button"
+                  variant="ghost"
+                  size="sm"
                   onClick={(e: React.MouseEvent) => e.stopPropagation()}
                   color="white"
                   p="0.5"
@@ -263,7 +266,7 @@ export const BucketVideoPlayer = ({
                   ) : (
                     <SpeakerHigh size={14} weight="fill" />
                   )}
-                </Box>
+                </Button>
               </PopoverTrigger>
               <PopoverContent
                 p="1.5"
@@ -289,8 +292,8 @@ export const BucketVideoPlayer = ({
                   colorPalette="green"
                   size="sm"
                   h="52px"
-                  aria-label="Lautstärke"
-                  sx={{
+                  aria-label={["Lautstärke"]}
+                  css={{
                     "& [data-part=track]": { w: "4px", borderRadius: "full" },
                     "& [data-part=thumb]": { w: "10px", h: "10px" },
                   }}
@@ -307,9 +310,10 @@ export const BucketVideoPlayer = ({
               </PopoverContent>
             </PopoverRoot>
             {/* Vollbild */}
-            <Box
-              as="button"
+            <Button
               type="button"
+              variant="ghost"
+              size="sm"
               onClick={toggleFullscreen}
               color="white"
               p="0.5"
@@ -318,7 +322,7 @@ export const BucketVideoPlayer = ({
               aria-label={isFullscreen ? "Vollbild beenden" : "Vollbild"}
             >
               <ArrowsOut size={14} weight="bold" />
-            </Box>
+            </Button>
           </Box>
         </Box>
       </Box>

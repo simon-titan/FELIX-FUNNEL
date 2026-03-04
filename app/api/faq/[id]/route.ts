@@ -13,12 +13,12 @@ const updateFAQSchema = z.object({
 
 // GET /api/faq/[id] - Einzelne FAQ abrufen
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = createServerClient();
-    const { id } = params;
+    const { id } = await params;
 
     const { data: faq, error } = await supabase
       .from("faqs")
@@ -47,11 +47,11 @@ export async function GET(
 // PUT /api/faq/[id] - FAQ aktualisieren (Admin)
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = createServerClient();
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
 
     const validatedData = updateFAQSchema.parse(body);
@@ -89,12 +89,12 @@ export async function PUT(
 
 // DELETE /api/faq/[id] - FAQ löschen (Admin)
 export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = createServerClient();
-    const { id } = params;
+    const { id } = await params;
 
     const { error } = await supabase
       .from("faqs")

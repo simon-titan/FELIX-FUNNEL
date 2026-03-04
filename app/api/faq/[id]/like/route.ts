@@ -3,12 +3,12 @@ import { createServerClient } from "@/utils/supabase/server";
 
 // POST /api/faq/[id]/like - FAQ liken/unliken (Toggle)
 export async function POST(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = createServerClient();
-    const { id } = params;
+    const { id } = await params;
 
     // Authentifizierter User erforderlich
     const { data: { user }, error: userError } = await supabase.auth.getUser();

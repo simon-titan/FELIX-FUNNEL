@@ -235,7 +235,7 @@ export default function FAQ() {
                   <Card.Body p="0">
                     <Stack gap="0">
                       {filteredFAQs.map((faq) => (
-                        <Box key={faq.id} borderBottom="1px solid" borderColor="green.100" lastChild={{ borderBottom: "none" }}>
+                        <Box key={faq.id} borderBottom="1px solid" borderColor="green.100" _last={{ borderBottom: "none" }}>
                           <Box p="4">
                             <Stack gap="3">
                               <HStack justify="space-between" align="start">

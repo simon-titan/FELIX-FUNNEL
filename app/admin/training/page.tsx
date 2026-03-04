@@ -31,8 +31,6 @@ import {
   Plus,
   Pencil,
   Trash,
-  Dumbbell,
-  Users,
 } from "@phosphor-icons/react";
 
 interface TrainingPlan {
@@ -217,9 +215,7 @@ export default function AdminTraining() {
                 <Table.Row key={plan.id}>
                   <Table.Cell>
                     <VStack align="start" gap={1}>
-                      <Text fontWeight="medium" noOfLines={1}>
-                        {plan.name}
-                      </Text>
+                      
                     </VStack>
                   </Table.Cell>
                   <Table.Cell>
@@ -234,9 +230,7 @@ export default function AdminTraining() {
                     </Text>
                   </Table.Cell>
                   <Table.Cell>
-                    <Text fontSize="sm" noOfLines={2}>
-                      {plan.description}
-                    </Text>
+                    
                   </Table.Cell>
                   <Table.Cell>
                     <HStack gap={1}>
@@ -302,14 +296,7 @@ export default function AdminTraining() {
                 <Text fontSize="sm" fontWeight="medium" mb={2}>
                   Zielgruppe
                 </Text>
-                <Select
-                  value={formData.gender}
-                  onChange={(e) => setFormData(prev => ({ ...prev, gender: e.target.value }))}
-                >
-                  <option value="">Alle</option>
-                  <option value="male">Männer</option>
-                  <option value="female">Frauen</option>
-                </Select>
+                
               </Box>
 
               <Box>

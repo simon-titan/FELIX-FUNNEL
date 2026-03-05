@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import {
   Center,
   Container,
@@ -12,9 +11,6 @@ import { Link } from "@/components/ui/link";
 import { Image } from "@/components/ui/image";
 
 export const FunnelNavbar = () => {
-  const pathname = usePathname();
-  const isAppPage = pathname?.includes("/pumpitclubapp");
-
   return (
     <Center
       as="header"
@@ -47,52 +43,8 @@ export const FunnelNavbar = () => {
             align="center"
             gap={{ base: 1, sm: 2, md: 3 }}
           >
-            {/* Left: Page Switch Button */}
-            <Box flexShrink={0} w={{ base: "60px", sm: "80px", md: "100px" }}>
-              <Link href={isAppPage ? "/" : "/pumpitclubapp"}>
-                <Button
-                  size={{ base: "sm", sm: "md", md: "lg" }}
-                  variant="ghost"
-                  colorPalette="gray"
-                  px={{ base: 1.5, sm: 3, md: 4 }}
-                  py={{ base: 1.5, sm: 2, md: 2.5 }}
-                  fontSize={{ base: "xs", sm: "sm", md: "md" }}
-                  borderRadius="lg"
-                  transition="all 0.3s ease"
-                  w="full"
-                  _hover={{
-                    bg: "rgba(0, 0, 0, 0.05)",
-                    transform: "translateY(-1px)",
-                  }}
-                  display="flex"
-                  alignItems="center"
-                  justifyContent={{ base: "center", sm: "flex-start" }}
-                  gap={{ base: 0, sm: 1.5, md: 2 }}
-                >
-                  {isAppPage ? (
-                    <>
-                      <Box
-                        as="span"
-                        display={{ base: "none", sm: "inline" }}
-                        whiteSpace="nowrap"
-                      >
-                        Zur Website
-                      </Box>
-                    </>
-                  ) : (
-                    <>
-                      <Box
-                        as="span"
-                        display={{ base: "none", sm: "inline" }}
-                        whiteSpace="nowrap"
-                      >
-                        Zur App
-                      </Box>
-                    </>
-                  )}
-                </Button>
-              </Link>
-            </Box>
+            {/* Spacer links, damit Logo mittig bleibt */}
+            <Box flexShrink={0} w={{ base: "72px", sm: "96px", md: "120px" }} />
 
             {/* Center: Logo */}
             <Center

@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Heading, Text, VStack, Card, CardBody, Image, Flex } from "@chakra-ui/react";
+import { Box, Heading, Text, VStack, Card, SimpleGrid, Image, Flex } from "@chakra-ui/react";
 import { Section } from "@/components/layout/section";
 
 export function ProblemSection() {
@@ -44,9 +44,9 @@ export function ProblemSection() {
   ];
 
   return (
-    <Section pt={12} pb={0}  id="problem-section" px="0" maxW="100vw" overflowX="hidden" >
-      <VStack gap={5} textAlign="center" mx="auto" w="full">
-        <VStack gap={2} px={{ base: 4, md: 6 }}>
+    <Section pt={12} pb={0} id="problem-section">
+      <VStack gap={5} textAlign="center" w="full">
+        <VStack gap={2}>
           <Text fontSize="xs" fontWeight="bold" letterSpacing="wider" color="red.500" textTransform="uppercase">
             Das Problem
           </Text>
@@ -57,73 +57,106 @@ export function ProblemSection() {
             Du bist nicht zu schwach – du hast einfach das falsche System.
           </Text>
         </VStack>
-        {/* Horizontal scrollbare Cards – bündig bis Viewport-Rand, Scrollbar ausgeblendet */}
-        <Box
-          w="100vw"
-          maxW="100vw"
-          overflowX="auto"
-          overflowY="hidden"
-          pb={3}
-          paddingInline={0}
-          className="problem-cards-scroll"
-        >
-          <Flex gap={4} width="max-content" minW="min-content" pl={{ base: 4, md: 6 }} pr={0}>
+        {/* Mobile: horizontal scroll | Desktop: Grid, kleinere Cards innerhalb der Website-Breite */}
+        <Box w="full" overflowX="hidden">
+          <Flex
+            display={{ base: "flex", md: "none" }}
+            gap={4}
+            width="max-content"
+            minW="min-content"
+            overflowX="auto"
+            overflowY="hidden"
+            pb={3}
+            className="problem-cards-scroll"
+            pl={4}
+          >
             {problemCards.map((card, index) => (
-              <Card.Root
-                key={index}
-                flexShrink={0}
-                w={{ base: "280px", sm: "320px" }}
-                overflow="hidden"
-                borderRadius="lg"
-                border="1px solid"
-                borderColor="red.200"
-                bg="rgba(254, 202, 202, 0.4)"
-                backdropFilter="blur(12px)"
-                boxShadow="0 8px 32px rgba(220, 38, 38, 0.05)"
-                _hover={{
-                  boxShadow: "0 12px 40px rgba(220, 38, 38, 0.1)",
-                  transform: "translateY(-4px)",
-                  transition: "all 0.2s ease-in-out",
-                }}
-              >
-                <Box position="relative" height="180px" width="full" overflow="hidden">
-                  <Image src={card.imageSrc} alt={card.title} objectFit="cover" width="full" height="full" />
-                  {/* Transparenter Verlauf: oben durchsichtig, unten abgedunkelt (Hex) */}
-                  <Box
-                    position="absolute"
-                    inset="0"
-                    style={{
-                      background: "linear-gradient(to bottom, #00000000 0%, #0000008C 100%)",
-                    }}
-                    pointerEvents="none"
-                  />
-                  <Box
-                    position="absolute"
-                    bottom="0"
-                    left="0"
-                    right="0"
-                    p={3}
-                    bgGradient="linear(to-t, blackAlpha.800, transparent)"
-                    color="white"
-                  >
-                    <Heading as="h3" size="sm" fontWeight="bold">
-                      {card.title}
-                    </Heading>
-                  </Box>
-                </Box>
-                <Card.Body p={5} textAlign="left">
-                  <Text fontWeight="semibold" color="gray.800" mt={1} fontSize="sm">
-                    {card.subheading}
-                  </Text>
-                  <Text fontSize="xs" color="gray.600" lineHeight="tall">
-                    {card.text}
-                  </Text>
-                </Card.Body>
-              </Card.Root>
+              <Box key={index} flexShrink={0}>
+                <ProblemCard card={card} imageH="180px" cardW="280px" p={5} />
+              </Box>
             ))}
           </Flex>
+          <SimpleGrid
+            display={{ base: "none", md: "grid" }}
+            columns={3}
+            gap={4}
+            w="full"
+            minW={0}
+          >
+            {problemCards.map((card, index) => (
+              <ProblemCard
+                key={index}
+                card={card}
+                imageH="140px"
+                cardW="100%"
+                p={4}
+              />
+            ))}
+          </SimpleGrid>
         </Box>
       </VStack>
     </Section>
+  );
+}
+
+function ProblemCard({
+  card,
+  imageH,
+  cardW,
+  p,
+}: {
+  card: { imageSrc: string; title: string; subheading: string; text: string };
+  imageH: string;
+  cardW: string;
+  p: number;
+}) {
+  return (
+    <Card.Root
+      w={cardW}
+      minW={0}
+      overflow="hidden"
+      borderRadius="lg"
+      border="1px solid"
+      borderColor="red.200"
+      bg="rgba(254, 202, 202, 0.4)"
+      backdropFilter="blur(12px)"
+      boxShadow="0 8px 32px rgba(220, 38, 38, 0.05)"
+      _hover={{
+        boxShadow: "0 12px 40px rgba(220, 38, 38, 0.1)",
+        transform: "translateY(-4px)",
+        transition: "all 0.2s ease-in-out",
+      }}
+    >
+      <Box position="relative" height={imageH} width="full" overflow="hidden">
+        <Image src={card.imageSrc} alt={card.title} objectFit="cover" width="full" height="full" />
+        <Box
+          position="absolute"
+          inset="0"
+          style={{ background: "linear-gradient(to bottom, #00000000 0%, #0000008C 100%)" }}
+          pointerEvents="none"
+        />
+        <Box
+          position="absolute"
+          bottom="0"
+          left="0"
+          right="0"
+          p={3}
+          bgGradient="linear(to-t, blackAlpha.800, transparent)"
+          color="white"
+        >
+          <Heading as="h3" size="sm" fontWeight="bold">
+            {card.title}
+          </Heading>
+        </Box>
+      </Box>
+      <Card.Body p={p} textAlign="left">
+        <Text fontWeight="semibold" color="gray.800" mt={1} fontSize="sm">
+          {card.subheading}
+        </Text>
+        <Text fontSize="xs" color="gray.600" lineHeight="tall">
+          {card.text}
+        </Text>
+      </Card.Body>
+    </Card.Root>
   );
 }

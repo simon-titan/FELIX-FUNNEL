@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Heading, Text, VStack, Card, CardBody, Image, Flex } from "@chakra-ui/react";
+import { Box, Heading, Text, VStack, Card, SimpleGrid, Image, Flex } from "@chakra-ui/react";
 import { Section } from "@/components/layout/section";
 
 export function SolutionSection() {
@@ -44,8 +44,8 @@ export function SolutionSection() {
   ];
 
   return (
-    <Section pt={8} pb={12} style={{ paddingInline: "0 !important" }} id="solutions-section">
-      <VStack gap={5} textAlign="center" mx="auto">
+    <Section pt={8} pb={12} id="solutions-section">
+      <VStack gap={5} textAlign="center" w="full">
         <VStack gap={2}>
           <Text fontSize="xs" fontWeight="bold" letterSpacing="wider" color="green.600" textTransform="uppercase">
             Die Lösung
@@ -57,75 +57,107 @@ export function SolutionSection() {
             Mit dem richtigen System wird alles besser – Energie, Körper und Kopf.
           </Text>
         </VStack>
-        {/* Gespiegelt: Scroll von rechts nach links (RTL), Wischen anders herum als Problem */}
-        <Box
-          width="100vw"
-          maxW="100vw"
-          overflowX="auto"
-          overflowY="hidden"
-          pb={3}
-          pr={0}
-          className="problem-cards-scroll"
-          dir="rtl"
-        >
-          <Flex gap={4} width="max-content" minW="min-content" pl={0} pr={{ base: 4, md: 6 }} dir="rtl">
+        {/* Mobile: horizontal scroll (RTL) | Desktop: Grid, kleinere Cards innerhalb der Website-Breite */}
+        <Box w="full" overflowX="hidden">
+          <Flex
+            display={{ base: "flex", md: "none" }}
+            gap={4}
+            width="max-content"
+            minW="min-content"
+            overflowX="auto"
+            overflowY="hidden"
+            pb={3}
+            className="problem-cards-scroll"
+            dir="rtl"
+            pr={4}
+          >
             {solutionCards.map((card, index) => (
-              <Card.Root
-                key={index}
-                flexShrink={0}
-                w={{ base: "280px", sm: "320px" }}
-                dir="ltr"
-                overflow="hidden"
-                borderRadius="lg"
-                border="1px solid"
-                borderColor="green.200"
-                bg="rgba(187, 247, 208, 0.4)"
-                backdropFilter="blur(12px)"
-                boxShadow="0 8px 32px rgba(34, 197, 94, 0.15)"
-                _hover={{
-                  boxShadow: "0 12px 40px rgba(34, 197, 94, 0.2)",
-                  transform: "translateY(-4px)",
-                  transition: "all 0.2s ease-in-out",
-                }}
-              >
-                <Box position="relative" height="180px" width="full" overflow="hidden">
-                  <Image src={card.imageSrc} alt={card.title} objectFit="cover" width="full" height="full" />
-                  {/* Transparenter Verlauf: oben durchsichtig, unten abgedunkelt (Hex) */}
-                  <Box
-                    position="absolute"
-                    inset="0"
-                    style={{
-                      background: "linear-gradient(to bottom, #00000000 0%, #0000008C 100%)",
-                    }}
-                    pointerEvents="none"
-                  />
-                  <Box
-                    position="absolute"
-                    bottom="0"
-                    left="0"
-                    right="0"
-                    p={3}
-                    bgGradient="linear(to-t, blackAlpha.800, transparent)"
-                    color="white"
-                  >
-                    <Heading as="h3" size="sm" fontWeight="bold">
-                      {card.title}
-                    </Heading>
-                  </Box>
-                </Box>
-                <Card.Body p={5} textAlign="left">
-                  <Text fontWeight="semibold" color="gray.800" mt={1} fontSize="sm">
-                    {card.subheading}
-                  </Text>
-                  <Text fontSize="xs" color="gray.600" lineHeight="tall">
-                    {card.text}
-                  </Text>
-                </Card.Body>
-              </Card.Root>
+              <Box key={index} flexShrink={0} dir="ltr">
+                <SolutionCard card={card} imageH="180px" cardW="280px" p={5} />
+              </Box>
             ))}
           </Flex>
+          <SimpleGrid
+            display={{ base: "none", md: "grid" }}
+            columns={3}
+            gap={4}
+            w="full"
+            minW={0}
+          >
+            {solutionCards.map((card, index) => (
+              <SolutionCard
+                key={index}
+                card={card}
+                imageH="140px"
+                cardW="100%"
+                p={4}
+              />
+            ))}
+          </SimpleGrid>
         </Box>
       </VStack>
     </Section>
+  );
+}
+
+function SolutionCard({
+  card,
+  imageH,
+  cardW,
+  p,
+}: {
+  card: { imageSrc: string; title: string; subheading: string; text: string };
+  imageH: string;
+  cardW: string;
+  p: number;
+}) {
+  return (
+    <Card.Root
+      w={cardW}
+      minW={0}
+      overflow="hidden"
+      borderRadius="lg"
+      border="1px solid"
+      borderColor="green.200"
+      bg="rgba(187, 247, 208, 0.4)"
+      backdropFilter="blur(12px)"
+      boxShadow="0 8px 32px rgba(34, 197, 94, 0.15)"
+      _hover={{
+        boxShadow: "0 12px 40px rgba(34, 197, 94, 0.2)",
+        transform: "translateY(-4px)",
+        transition: "all 0.2s ease-in-out",
+      }}
+    >
+      <Box position="relative" height={imageH} width="full" overflow="hidden">
+        <Image src={card.imageSrc} alt={card.title} objectFit="cover" width="full" height="full" />
+        <Box
+          position="absolute"
+          inset="0"
+          style={{ background: "linear-gradient(to bottom, #00000000 0%, #0000008C 100%)" }}
+          pointerEvents="none"
+        />
+        <Box
+          position="absolute"
+          bottom="0"
+          left="0"
+          right="0"
+          p={3}
+          bgGradient="linear(to-t, blackAlpha.800, transparent)"
+          color="white"
+        >
+          <Heading as="h3" size="sm" fontWeight="bold">
+            {card.title}
+          </Heading>
+        </Box>
+      </Box>
+      <Card.Body p={p} textAlign="left">
+        <Text fontWeight="semibold" color="gray.800" mt={1} fontSize="sm">
+          {card.subheading}
+        </Text>
+        <Text fontSize="xs" color="gray.600" lineHeight="tall">
+          {card.text}
+        </Text>
+      </Card.Body>
+    </Card.Root>
   );
 }

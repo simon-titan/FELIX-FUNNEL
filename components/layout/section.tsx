@@ -5,9 +5,11 @@ export interface SectionProps extends BoxProps {
   children?: React.ReactNode;
   header?: boolean;
   size?: "xs" | "sm" | "md" | "lg";
+  /** Auf Desktop (md+) volle Breite, Inhalt mittig zentriert; Mobile unverändert */
+  fullWidthOnDesktop?: boolean;
 }
 
-export const Section = ({ header, size = "md", ...props }: SectionProps) => {
+export const Section = ({ header, size = "md", fullWidthOnDesktop, ...props }: SectionProps) => {
   const { ...rootProps } = props;
   const paddingY = {
     xs: {
@@ -71,6 +73,23 @@ export const Section = ({ header, size = "md", ...props }: SectionProps) => {
       </Box>
     );
   }
+  if (fullWidthOnDesktop) {
+    return (
+      <Box as="section" w="full" maxW="100vw" overflowX="hidden" {...rootProps}>
+        <Box
+          w="full"
+          maxW={{ base: "full", md: "100vw" }}
+          mx="auto"
+          px={{ base: "4", md: "6" }}
+          py={{ base: paddingY[size].base, md: paddingY[size].md }}
+          overflowX="hidden"
+        >
+          {props.children}
+        </Box>
+      </Box>
+    );
+  }
+
   return (
     <Box as="section" w="full" maxW="100vw" overflowX="hidden" {...rootProps}>
       <Container maxW={{ base: "full", md: "6xl", lg: "7xl" }} w="full" px={{ base: "4", md: "6" }}>

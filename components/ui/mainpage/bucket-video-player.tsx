@@ -114,15 +114,50 @@ export const BucketVideoPlayer = ({
     setMuted(v === 0);
   }, []);
 
+  // iOS: Nur das <video>-Element kann Vollbild; Container-Fullscreen-API wird nicht unterstützt.
   const toggleFullscreen = useCallback(() => {
-    const el = containerRef.current;
-    if (!el) return;
+    const video = videoRef.current;
+    const container = containerRef.current;
+    if (!video && !container) return;
+
+    const v = video as HTMLVideoElement & {
+      webkitEnterFullscreen?: () => void;
+      webkitExitFullscreen?: () => void;
+      webkitDisplayingFullscreen?: boolean;
+    };
+
+    // iOS / WebKit: Vollbild nur über das Video-Element (Safari iOS unterstützt kein Element.requestFullscreen)
+    if (typeof v.webkitEnterFullscreen === "function") {
+      if (v.webkitDisplayingFullscreen) {
+        v.webkitExitFullscreen?.();
+      } else {
+        v.webkitEnterFullscreen?.();
+      }
+      return;
+    }
+
+    // Desktop: Standard Fullscreen API auf dem Container
     if (!document.fullscreenElement) {
-      el.requestFullscreen?.().then(() => setIsFullscreen(true)).catch(() => {});
+      container?.requestFullscreen?.().then(() => setIsFullscreen(true)).catch(() => {});
     } else {
       document.exitFullscreen?.().then(() => setIsFullscreen(false)).catch(() => {});
     }
   }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const v = video as HTMLVideoElement & { webkitDisplayingFullscreen?: boolean };
+    const onWebkitEndFullscreen = () => setIsFullscreen(false);
+    const onWebkitBeginFullscreen = () => setIsFullscreen(true);
+    video.addEventListener("webkitendfullscreen", onWebkitEndFullscreen);
+    video.addEventListener("webkitbeginfullscreen", onWebkitBeginFullscreen);
+    return () => {
+      video.removeEventListener("webkitendfullscreen", onWebkitEndFullscreen);
+      video.removeEventListener("webkitbeginfullscreen", onWebkitBeginFullscreen);
+    };
+  }, [src]);
 
   useEffect(() => {
     const handler = () => setIsFullscreen(!!document.fullscreenElement);
